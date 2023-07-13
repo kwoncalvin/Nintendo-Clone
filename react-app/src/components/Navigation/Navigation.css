@@ -1,5 +1,13 @@
 .profile-dropdown {
-  position: absolute;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 19rem;
+  height: 100vh;
+  background-color: rgb(241, 241, 241);
+  margin: 0px;
+  padding: 20px;
+  overflow-y: hidden;
 }
 
 .hidden {
@@ -9,4 +17,84 @@
 #logo {
   width: auto;
   height: 3.5rem;
+}
+
+#nav-bar-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+#nav-bar-top {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px grey solid;
+  height: 3.5rem;
+}
+
+#nav-bar-top-left {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+#nav-middle {
+  position: absolute;
+  left: 44%;
+  right: 44%;
+  text-align: center;
+}
+
+#nav-bar-top-right {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0px 1.5rem;
+}
+
+#nav-bar-bottom {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 3.5rem;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.grey-back {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.right-modal-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.right-modal-info {
+  display: flex;
+  flex-direction: column;
+  padding-right: 0.5rem;
+}
+
+#no-user-box {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 1rem 1.2rem;
+}
+
+.user-info-links {
+  display: flex;
+  flex-direction: column;
 }
