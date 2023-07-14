@@ -1,20 +1,26 @@
+const POST_PRODUCT = "/products/POST";
 const GET_ALL_PRODUCTS = "/products/GET/all"
 const GET_PRODUCT = "/products/GET/single"
-const POST_PRODUCT = "/products/POST";
 const DELETE_PRODUCT = "/products/DELETE";
 
-const getAllProducts = (products) => ({
-	type: GET_ALL_PRODUCTS,
-	payload: products
-})
-
-const postProduct = (product) => ({
+const productPOST = (product) => ({
 	type: POST_PRODUCT,
-	payload: product,
+	product
 });
 
-const deleteProduct = () => ({
+const allProductsGET = (products) => ({
+	type: GET_ALL_PRODUCTS,
+	products
+})
+
+const productGET = (product) => ({
+	type: GET_PRODUCT,
+	product
+})
+
+const productDELETE = (id) => ({
 	type: DELETE_PRODUCT,
+	id
 });
 
 const initialState = {
@@ -22,90 +28,73 @@ const initialState = {
 	allProducts: {}
 };
 
-export const authenticate = () => async (dispatch) => {
-	const response = await fetch("/api/auth/", {
-		headers: {
-			"Content-Type": "application/json",
-		},
-	});
-	if (response.ok) {
-		const data = await response.json();
-		if (data.errors) {
-			return;
-		}
 
-		dispatch(setUser(data));
-	}
-};
+export const postProduct = (product) => async (dispatch) => {
+	const res = await csrfFetch("/api/products/new", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(product),
+    });
 
-export const login = (email, password) => async (dispatch) => {
-	const response = await fetch("/api/auth/login", {
-		method: "POST",
-		headers: {
-			"Content-Type": "application/json",
-		},
-		body: JSON.stringify({
-			email,
-			password,
-		}),
-	});
+    if (res.ok) {
+        const product = await res.json();
+        dispatch(productPOST(product));
+        return product;
+    }
+}
 
-	if (response.ok) {
-		const data = await response.json();
-		dispatch(setUser(data));
-		return null;
-	} else if (response.status < 500) {
-		const data = await response.json();
-		if (data.errors) {
-			return data.errors;
-		}
-	} else {
-		return ["An error occurred. Please try again."];
-	}
-};
+export const getAllProducts = () => async (dispatch) => {
+	const res = await fetch("/api/products");
+    if (res.ok) {
+        const data = await res.json();
+        const products = data.Products;
+        dispatch(allProductsGET(products));
+    }
+}
 
-export const logout = () => async (dispatch) => {
-	const response = await fetch("/api/auth/logout", {
-		headers: {
-			"Content-Type": "application/json",
-		},
-	});
+export const getProduct = (id) => async (dispatch) => {
+	const res = await fetch(`/api/products/${id}`);
+    if (res.ok) {
+        const product = await res.json();
+        dispatch(productGET(product));
+    }
+}
 
-	if (response.ok) {
-		dispatch(removeUser());
-	}
-};
+export const putProduct = (product, id) => async (dispatch) => {
+	const res = await csrfFetch(`/api/products/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(product),
+    });
 
-export const signUp = (username, nickname, email, password) => async (dispatch) => {
-	const response = await fetch("/api/auth/signup", {
-		method: "POST",
-		headers: {
-			"Content-Type": "application/json",
-		},
-		body: JSON.stringify({
-			username,
-			nickname,
-			email,
-			password,
-		}),
-	});
+    if (res.ok) {
+        const product = await res.json();
+        dispatch(productPOST(product));
+        return product;
+    }
+}
 
-	if (response.ok) {
-		const data = await response.json();
-		dispatch(setUser(data));
-		return null;
-	} else if (response.status < 500) {
-		const data = await response.json();
-		if (data.errors) {
-			return data.errors;
-		}
-	} else {
-		return ["An error occurred. Please try again."];
-	}
-};
+export const deleteProduct = (id) => async (dispatch) => {
+	const res = await csrfFetch(`/api/products/${id}`, {
+        method: "DELETE"
+    })
+
+    if (res.ok) {
+        dispatch(productDELETE(id));
+    }
+}
+
 
 const productsReducer = (state = initialState, action) => {
 	switch (action.type) {
+		case POST_PRODUCT:
+			return {
+				...state,
+				allProducts: {
+					...state.allProducts,
+					[action.product.id]: action.product
+				}
+			}
 		case GET_ALL_PRODUCTS:
 			return {
 				...state,
@@ -116,6 +105,14 @@ const productsReducer = (state = initialState, action) => {
 				...state,
 				singleProduct: action.product
 			};
+		case DELETE_PRODUCT:
+			let res = {
+				...state,
+				allProducts: { ...state.allProducts},
+				singleProduct: {}
+			}
+			delete res.allProducts[action.id]
+			return res
 		default:
 			return state;
 	}
