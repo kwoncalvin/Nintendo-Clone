@@ -17,6 +17,7 @@
 #logo {
   width: auto;
   height: 3.5rem;
+  cursor: pointer;
 }
 
 #nav-bar-wrapper {
@@ -29,7 +30,6 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px grey solid;
   height: 3.5rem;
 }
 
@@ -62,6 +62,7 @@
   height: 3.5rem;
   justify-content: center;
   gap: 1.5rem;
+  border-top: 1px grey solid;
 }
 
 .grey-back {
