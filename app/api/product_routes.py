@@ -7,7 +7,7 @@ from .auth_routes import validation_errors_to_error_messages
 product_routes = Blueprint('products', __name__)
 
 
-@product_routes.route('/')
+@product_routes.route('')
 def get_all_products():
     """
     Query for all products and returns them in a dictionary of product.id to product info

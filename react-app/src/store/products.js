@@ -47,7 +47,7 @@ export const getAllProducts = () => async (dispatch) => {
 	const res = await fetch("/api/products");
     if (res.ok) {
         const data = await res.json();
-        const products = data.Products;
+        const products = data.all_products;
         dispatch(allProductsGET(products));
     }
 }

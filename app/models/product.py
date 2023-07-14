@@ -22,9 +22,10 @@ class Product(db.Model):
     def to_dict(self):
         return {
             'id': self.id,
-            'user_id': self.user_id,
+            'userId': self.user_id,
             'name': self.name,
-            'description_header': self.description_header,
+            'descriptionHeader': self.description_header,
             'description': self.description,
-            'release_date': self.release_date
+            'releaseDate': self.release_date,
+            'imageUrl': self.image_url
         }
