@@ -33,7 +33,7 @@ const Navigation = ({ isLoaded }) => {
 			{simpleNav ? null :
 				<div id='nav-bar-bottom'>
 
-					<div>My Twintendo Store</div>
+					<div onClick={() => history.push('/store')}>My Twintendo Store</div>
 					<div>Games</div>
 					<div>Twintendo Switch</div>
 					<div>News & Events</div>

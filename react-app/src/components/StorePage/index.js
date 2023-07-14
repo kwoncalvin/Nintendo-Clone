@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { getAllProducts } from "../../store/products";
 
+import ProductPreview from "../ProductPreview";
+
 const StorePage = () => {
     const dispatch = useDispatch();
     const products = useSelector((state) => state.products.allProducts)
@@ -16,17 +18,14 @@ const StorePage = () => {
     return (
         <div>
             <h2>All Products</h2>
-            {
-                Object.values(products).map((product) => {
-                    return (
-                        <dev>
-                            hi
-                            <h2>{product.name}</h2>
-                            <div>{product.description}</div>
-                        </dev>
-                    )
-                })
-            }
+            {Object.values(products).map((product) => {
+                return (
+                    <ProductPreview
+                        key={product.id}
+                        product={product}
+                    />
+                )
+            })}
         </div>
     )
 }
