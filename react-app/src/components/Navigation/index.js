@@ -1,10 +1,11 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
 
 function Navigation({ isLoaded }){
+	const history = useHistory();
 	const sessionUser = useSelector(state => state.session.user);
 	const location = useLocation();
 	const simpleNav = location.pathname === '/login' || location.pathname === '/signup'
@@ -13,10 +14,10 @@ function Navigation({ isLoaded }){
 		<div id='nav-bar-wrapper'>
 			<div id='nav-bar-top'>
 				<div id='nav-bar-top-left'>
-					<img id='logo' src='/logo.png'/>
+					<img id='logo' src='/logo.png' onClick={() => history.push('/')}/>
 					{simpleNav ? null : <div>Search Bar</div>}
 				</div>
-				{simpleNav? <div id='nav-middle'>Nintendo Account</div> : null}
+				{simpleNav? <div id='nav-middle'>Twintendo Account</div> : null}
 				{simpleNav ? <div></div> :
 					<div id='nav-bar-top-right'>
 						<div>Support</div>
@@ -32,11 +33,11 @@ function Navigation({ isLoaded }){
 			{simpleNav ? null :
 				<div id='nav-bar-bottom'>
 
-					<div>My Nintendo Store</div>
+					<div>My Twintendo Store</div>
 					<div>Games</div>
-					<div>Nintendo Switch</div>
+					<div>Twintendo Switch</div>
 					<div>News & Events</div>
-					<div>Play Nintendo</div>
+					<div>Play Twintendo</div>
 
 				</div>
 			}
