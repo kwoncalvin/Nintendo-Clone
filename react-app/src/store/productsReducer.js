@@ -30,7 +30,7 @@ const initialState = {
 
 
 export const postProduct = (product) => async (dispatch) => {
-	const res = await csrfFetch("/api/products/new", {
+	const res = await fetch("/api/products/new", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(product),
@@ -61,7 +61,7 @@ export const getProduct = (id) => async (dispatch) => {
 }
 
 export const putProduct = (product, id) => async (dispatch) => {
-	const res = await csrfFetch(`/api/products/${id}`, {
+	const res = await fetch(`/api/products/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(product),
@@ -75,7 +75,7 @@ export const putProduct = (product, id) => async (dispatch) => {
 }
 
 export const deleteProduct = (id) => async (dispatch) => {
-	const res = await csrfFetch(`/api/products/${id}`, {
+	const res = await fetch(`/api/products/${id}`, {
         method: "DELETE"
     })
 
