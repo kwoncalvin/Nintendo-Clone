@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { login } from "../../store/session";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import './LoginForm.css';
 
-function LoginFormPage() {
+const LoginFormPage = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   const sessionUser = useSelector((state) => state.session.user);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -21,36 +22,56 @@ function LoginFormPage() {
     }
   };
 
+  const demoUser = async (e) => {
+    e.preventDefault()
+    let email = "demo@aa.io"
+    let password = "password"
+    const data = await dispatch(login(email, password));
+    if (data) {
+      setErrors(data);
+    } else {
+      history.push("/")
+    }
+  }
+
   return (
-    <>
-      <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
-        <ul>
-          {errors.map((error, idx) => (
-            <li key={idx}>{error}</li>
-          ))}
-        </ul>
-        <label>
-          Email
-          <input
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Password
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </label>
-        <button type="submit">Log In</button>
-      </form>
-    </>
+    <div id='login-page-wrapper'>
+      <h1>Twintendo Account</h1>
+      <div id='login-box'>
+        <form id='login-form' onSubmit={handleSubmit}>
+
+            {errors.map((error, idx) => (
+              <li key={idx}>{error}</li>
+            ))}
+
+
+            <input
+              type="text"
+              value={email}
+              placeholder="E-mail address/Sign-in ID"
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+
+
+            <input
+              type="password"
+              value={password}
+              placeholder="Password"
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+
+          <button type="submit">Sign in</button>
+          <div>
+            <div>Sign in with</div>
+            <button onClick={demoUser}>Demo User</button>
+          </div>
+          <div>Don't have an account?</div>
+          <button onClick={() => history.push('/signup')}>Create a Twintendo Account</button>
+        </form>
+      </div>
+    </div>
   );
 }
 
