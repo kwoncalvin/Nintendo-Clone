@@ -5,7 +5,7 @@ const ProductPreview = ({product}) => {
 
     return (
         <div
-            onClick={() => history.push(`store/products/${product.id}`)}
+            onClick={() => history.push(`/store/products/${product.id}`)}
         >
             <img src={product.imageUrl || '/logo.png'}/>
             <div>
