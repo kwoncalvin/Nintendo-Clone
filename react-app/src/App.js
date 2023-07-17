@@ -5,6 +5,9 @@ import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import LandingPage from "./components/LandingPage";
 import StorePage from "./components/StorePage";
+import ProductPage from "./components/ProductPage";
+import ManageProductsPage from "./components/ManageProductsPage";
+import ProductFormPage from "./components/ProductFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 
@@ -24,13 +27,25 @@ function App() {
             <LandingPage/>
           </Route>
           <Route path="/login" >
-            <LoginFormPage />
+            <LoginFormPage/>
           </Route>
           <Route path="/signup">
-            <SignupFormPage />
+            <SignupFormPage/>
           </Route>
           <Route exact path = '/store'>
-            <StorePage />
+            <StorePage/>
+          </Route>
+          <Route exact path = '/store/products/new'>
+            <ProductFormPage/>
+          </Route>
+          <Route exact path = '/store/products/:productId'>
+            <ProductPage/>
+          </Route>
+          <Route exact path = '/store/products/:productId/edit'>
+            <ProductFormPage/>
+          </Route>
+          <Route exact path = '/current/products'>
+            <ManageProductsPage/>
           </Route>
         </Switch>
       )}
