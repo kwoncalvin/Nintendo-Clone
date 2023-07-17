@@ -1,5 +1,6 @@
 const POST_PRODUCT = "/products/POST";
 const GET_ALL_PRODUCTS = "/products/GET/all"
+const GET_CURRENT_PRODUCTS = "/products/GET/current"
 const GET_PRODUCT = "/products/GET/single"
 const DELETE_PRODUCT = "/products/DELETE";
 
@@ -10,6 +11,11 @@ const productPOST = (product) => ({
 
 const allProductsGET = (products) => ({
 	type: GET_ALL_PRODUCTS,
+	products
+})
+
+const currentProductsGET = (products) => ({
+	type: GET_CURRENT_PRODUCTS,
 	products
 })
 
@@ -25,19 +31,21 @@ const productDELETE = (id) => ({
 
 const initialState = {
 	singleProduct: {},
+	currentProducts: {},
 	allProducts: {}
 };
 
 
 export const postProduct = (product) => async (dispatch) => {
+
 	const res = await fetch("/api/products/new", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(product),
+        body: product,
     });
 
     if (res.ok) {
-        const product = await res.json();
+        const data = await res.json();
+		const product = data.new_product
         dispatch(productPOST(product));
         return product;
     }
@@ -52,10 +60,20 @@ export const getAllProducts = () => async (dispatch) => {
     }
 }
 
+export const getCurrentProducts = () => async (dispatch) => {
+	const res = await fetch("/api/products/current");
+    if (res.ok) {
+        const data = await res.json();
+        const products = data.current_products;
+        dispatch(currentProductsGET(products));
+    }
+}
+
 export const getProduct = (id) => async (dispatch) => {
 	const res = await fetch(`/api/products/${id}`);
     if (res.ok) {
-        const product = await res.json();
+        const data = await res.json();
+		const product = data.single_product;
         dispatch(productGET(product));
     }
 }
@@ -63,12 +81,12 @@ export const getProduct = (id) => async (dispatch) => {
 export const putProduct = (product, id) => async (dispatch) => {
 	const res = await fetch(`/api/products/${id}`, {
         method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(product),
+        body: product,
     });
 
     if (res.ok) {
-        const product = await res.json();
+        const data = await res.json();
+		const product = data.updated_product;
         dispatch(productPOST(product));
         return product;
     }
@@ -100,6 +118,11 @@ const productsReducer = (state = initialState, action) => {
 				...state,
 				allProducts: action.products
 			};
+		case GET_CURRENT_PRODUCTS:
+			return {
+				...state,
+				currentProducts: action.products
+			}
 		case GET_PRODUCT:
 			return {
 				...state,
@@ -109,9 +132,11 @@ const productsReducer = (state = initialState, action) => {
 			let res = {
 				...state,
 				allProducts: { ...state.allProducts},
+				currentProducts: { ...state.currentProducts},
 				singleProduct: {}
 			}
 			delete res.allProducts[action.id]
+			delete res.currentProductsProducts[action.id]
 			return res
 		default:
 			return state;

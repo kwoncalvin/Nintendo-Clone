@@ -17,11 +17,11 @@ def get_all_products():
 
 
 @product_routes.route('/<int:productId>')
-def get_single_product(id):
+def get_single_product(productId):
     """
     Query for a product by id and returns that product in a dictionary
     """
-    product = Product.query.get(id)
+    product = Product.query.get(productId)
     return {'single_product': product.to_dict()}
 
 @product_routes.route("/current")
@@ -35,18 +35,16 @@ def get_current_products():
 
 @product_routes.route('/new', methods=["POST"])
 @login_required
-def create_restaurant():
+def create_product():
     """
     This route will create a product
     """
     form = ProductForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-
     if form.validate_on_submit():
         # image = form.data["image_url"]
         # image.filename = get_unique_filename(image.filename)
         # upload = upload_file_to_s3(image)
-
         new_product = Product(
             user_id = current_user.id,
             name = form.data['name'],
@@ -64,8 +62,8 @@ def create_restaurant():
 
 @product_routes.route('/<int:productId>', methods=["PUT"])
 @login_required
-def update_restaurant(product_id):
-    product = Product.query.get(product_id)
+def update_product(productId):
+    product = Product.query.get(productId)
     if product is None:
         return {'errors': ['Product does not exist']}, 404
     if product.user_id is not current_user.id:
@@ -75,7 +73,11 @@ def update_restaurant(product_id):
     """
     form = ProductForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-
+    print(form.data['name'])
+    print(form.data['description_header'])
+    print(form.data['description'])
+    print(form.data['release_date'])
+    print(form.data['image_url'])
     if form.validate_on_submit():
         product.name = form.data['name']
         product.description_header = form.data['description_header']
