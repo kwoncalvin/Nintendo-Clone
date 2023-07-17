@@ -19,7 +19,7 @@ const ProductPage = () => {
 
     useEffect(() => {
         dispatch(getProduct(productId));
-    }, [dispatch])
+    }, [dispatch, productId])
 
     return (
         <div>

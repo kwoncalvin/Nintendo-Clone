@@ -71,7 +71,10 @@ def update_product(productId):
     """
     This route will update a product.
     """
+    req = request.get_json()
+    print(request.data)
     form = ProductForm()
+    print(form)
     form['csrf_token'].data = request.cookies['csrf_token']
     print(form.data['name'])
     print(form.data['description_header'])

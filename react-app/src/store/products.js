@@ -37,10 +37,17 @@ const initialState = {
 
 
 export const postProduct = (product) => async (dispatch) => {
+	const {name, descriptionHeader, description, releaseDate, imageUrl} = product;
+	const formData = new FormData();
+	formData.append("name", name);
+	formData.append("description_header", descriptionHeader);
+	formData.append("description", description);
+	formData.append("release_date", releaseDate);
+	formData.append("image_url", imageUrl);
 
 	const res = await fetch("/api/products/new", {
         method: "POST",
-        body: product,
+        body: formData,
     });
 
     if (res.ok) {
@@ -79,10 +86,21 @@ export const getProduct = (id) => async (dispatch) => {
 }
 
 export const putProduct = (product, id) => async (dispatch) => {
+	console.log('heloo')
+	const {name, descriptionHeader, description, releaseDate, imageUrl} = product;
+	const formData = new FormData();
+	formData.append("name", name);
+	formData.append("description_header", descriptionHeader);
+	formData.append("description", description);
+	formData.append("release_date", releaseDate);
+	formData.append("image_url", imageUrl);
+	formData.append('productId', id)
+
 	const res = await fetch(`/api/products/${id}`, {
         method: "PUT",
-        body: product,
+        body: formData,
     });
+	console.log('*******************************')
 
     if (res.ok) {
         const data = await res.json();
