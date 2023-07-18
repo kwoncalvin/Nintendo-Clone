@@ -1,9 +1,8 @@
 from flask import Blueprint, request
 from flask_login import login_required, current_user
 from app.models import CartItem, db
-from .auth_routes import validation_errors_to_error_messages
 
-cart_item_routes = Blueprint('products', __name__)
+cart_item_routes = Blueprint('cart_items', __name__)
 
 
 @cart_item_routes.route('')
@@ -72,7 +71,7 @@ def delete_cart_item(cartItemId):
 
 @cart_item_routes.route("/cart/delete", methods=['DELETE'])
 @login_required
-def delete_cart():
+def clear_cart():
     """
     This route will clear the current user's cart
     """

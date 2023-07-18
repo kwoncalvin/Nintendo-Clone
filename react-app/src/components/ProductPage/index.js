@@ -13,6 +13,8 @@ const ProductPage = () => {
     const params = useParams();
     const productId = params.productId;
 
+    const [quantity, setQuantity] = useState(1);
+
     const product = useSelector((state) => {
         if (productId == state.products.singleProduct.id)
             return state.products.singleProduct;
@@ -22,6 +24,14 @@ const ProductPage = () => {
     useEffect(() => {
         dispatch(getProduct(productId));
     }, [dispatch, productId])
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+
+    }
+
+
 
     return (
         <div>
@@ -39,7 +49,14 @@ const ProductPage = () => {
                         <div>Twintendo Switch</div>
                         <div>{product.name}</div>
                         <div>Price</div>
-                        <button>Add to Cart</button>
+                        <div>
+                            <div>
+                                <button onClick={() => setQuantity(quantity - 1)} disabled={quantity == 1}>-</button>
+                                {quantity}
+                                <button onClick={() => setQuantity(quantity + 1)}>+</button>
+                            </div>
+                            <button>Add to Cart</button>
+                        </div>
                         <button onClick={() => history.push(`/store/products/${productId}/edit`)}>Edit</button>
                         <OpenModalButton
                             buttonText="Delete"
