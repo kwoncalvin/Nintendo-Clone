@@ -35,7 +35,7 @@ const LoginFormPage = () => {
   }
 
   return (
-    <div id='login-page-wrapper'>
+    <div id='login-page-wrapper' className="dodge-small-nav">
       <h1>Twintendo Account</h1>
       <div id='login-box'>
         <form id='login-form' onSubmit={handleSubmit}>

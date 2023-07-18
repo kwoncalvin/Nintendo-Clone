@@ -8,6 +8,7 @@ import StorePage from "./components/StorePage";
 import ProductPage from "./components/ProductPage";
 import ManageProductsPage from "./components/ManageProductsPage";
 import ProductFormPage from "./components/ProductFormPage";
+import CartPage from "./components/CartPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 
@@ -48,7 +49,7 @@ function App() {
             <ManageProductsPage/>
           </Route>
           <Route exact path = '/cart'>
-
+            <CartPage/>
           </Route>
         </Switch>
       )}

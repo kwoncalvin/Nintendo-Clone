@@ -16,7 +16,7 @@ const StorePage = () => {
 
 
     return (
-        <div>
+        <div className="dodge-nav">
             <h2>All Products</h2>
             {Object.values(products).map((product) => {
                 return (

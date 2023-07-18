@@ -79,7 +79,7 @@ function ProfileButton({ user }) {
                 <div className="right-modal-info">
                   <div id='yes-user-box'>
                     <img src='https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.0/c_scale,w_300/Dev/Global%20Navigation/unauthd-asset.png'/>
-                    <div onClick={() => history.push('/current/products')}>Manage Products</div>
+                    <button onClick={() => history.push('/current/products')}>Manage Products</button>
                     <div>With a free account, you can</div>
                     <div>Shop online</div>
                     <div>Earn My Twintendo points</div>

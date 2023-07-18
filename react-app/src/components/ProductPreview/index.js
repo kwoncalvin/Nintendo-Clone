@@ -1,10 +1,13 @@
 import { useHistory } from "react-router-dom"
 
+import './ProductPreview.css'
+
 const ProductPreview = ({product}) => {
     const history = useHistory();
 
     return (
         <div
+            class='product-preview-wrapper'
             onClick={() => history.push(`/store/products/${product.id}`)}
         >
             <img src={product.imageUrl || '/logo.png'}/>

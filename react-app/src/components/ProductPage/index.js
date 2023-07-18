@@ -7,6 +7,7 @@ import OpenModalButton from "../OpenModalButton"
 import DeleteModal from "../DeleteModal";
 
 import { postCartItem } from "../../store/cart_items";
+import './ProductPage.css'
 
 
 const ProductPage = () => {
@@ -65,7 +66,7 @@ const ProductPage = () => {
                                 {quantity}
                                 <button onClick={() => setQuantity(quantity + 1)}>+</button>
                             </div>
-                            <button>Add to Cart</button>
+                            <button onClick={handleSubmit}>Add to Cart</button>
                         </div>
                         <button onClick={() => history.push(`/store/products/${productId}/edit`)}>Edit</button>
                         <OpenModalButton

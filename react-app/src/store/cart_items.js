@@ -3,24 +3,23 @@ const GET_CURRENT_CART_ITEMS = '/cart_items/GET/current';
 const DELETE_CART_ITEM = '/cart_items/DELETE';
 const CLEAR_CART = '/cart/clear';
 
-const cartItemPOST = (product) => ({
-	type: POST_PRODUCT,
-	product
+const cartItemPOST = (cartItem) => ({
+	type: POST_CART_ITEM,
+	cartItem
 });
 
-const currentCartItemsGET = (products) => ({
-	type: GET_CURRENT_PRODUCTS,
-	products
+const currentCartItemsGET = (cartItems) => ({
+	type: GET_CURRENT_CART_ITEMS,
+	cartItems
 });
 
 const cartItemDELETE = (id) => ({
-	type: DELETE_PRODUCT,
+	type: DELETE_CART_ITEM,
 	id
 });
 
-const cartCLEAR = (products) => ({
-	type: DELETE_PRODUCT,
-	products
+const cartCLEAR = () => ({
+	type: CLEAR_CART
 });
 
 const initialState = {
@@ -51,6 +50,10 @@ export const getCurrentCartItems = () => async (dispatch) => {
         const cartItems = data.cart_items;
         dispatch(currentCartItemsGET(cartItems));
     }
+}
+
+export const getCartItem = (id) => async () => {
+    const res = await fetch(`/api/cart-items/${id}`)
 }
 
 export const putCartItem = (cartItem, id) => async (dispatch) => {

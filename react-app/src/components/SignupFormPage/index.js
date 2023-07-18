@@ -29,7 +29,7 @@ const SignupFormPage = () => {
   };
 
   return (
-    <>
+    <div className="dodge-small-nav">
       <h1>Sign Up</h1>
       <form onSubmit={handleSubmit}>
         <ul>
@@ -82,7 +82,7 @@ const SignupFormPage = () => {
         </label>
         <button type="submit">Sign Up</button>
       </form>
-    </>
+    </div>
   );
 }
 

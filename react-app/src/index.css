@@ -11,3 +11,15 @@ h2 {
 .error {
     color: red;
 }
+
+.dodge-nav {
+    position: absolute;
+    width: 100%;
+    top: 6rem;
+}
+
+.dodge-small-nav {
+    position: absolute;
+    width: 100%;
+    top: 3.2rem;
+}

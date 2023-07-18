@@ -27,7 +27,7 @@ def add_cart_item():
 
     new_cart_item = CartItem(
         user_id = current_user.id,
-        productId = productId,
+        product_id = productId,
         quantity = quantity
     )
     db.session.add(new_cart_item)
