@@ -16,13 +16,17 @@
 
 #logo {
   width: auto;
-  height: 3.5rem;
+  height: 3.2rem;
   cursor: pointer;
 }
 
 #nav-bar-wrapper {
   display: flex;
   flex-direction: column;
+  position: fixed;
+  width: 100%;
+  background-color: white;
+  z-index: 1;
 }
 
 #nav-bar-top {
@@ -30,7 +34,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  height: 3.5rem;
+  height: 3.2rem;
 }
 
 #nav-bar-top-left {
@@ -59,10 +63,11 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  height: 3.5rem;
+  height: 2.8rem;
   justify-content: center;
   gap: 1.5rem;
   border-top: 1px grey solid;
+  border-bottom: 1px grey solid;
 }
 
 .grey-back {

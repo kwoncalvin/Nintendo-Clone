@@ -12,17 +12,17 @@ const productPOST = (product) => ({
 const allProductsGET = (products) => ({
 	type: GET_ALL_PRODUCTS,
 	products
-})
+});
 
 const currentProductsGET = (products) => ({
 	type: GET_CURRENT_PRODUCTS,
 	products
-})
+});
 
 const productGET = (product) => ({
 	type: GET_PRODUCT,
 	product
-})
+});
 
 const productDELETE = (id) => ({
 	type: DELETE_PRODUCT,

@@ -22,7 +22,7 @@ const Navigation = ({ isLoaded }) => {
 					<div id='nav-bar-top-right'>
 						<div>Support</div>
 						<div>Wish List</div>
-						<div>Cart</div>
+						<button onClick={() => history.push('/cart')}>Cart</button>
 						<div>
 							{isLoaded && <ProfileButton user={sessionUser}/>}
 						</div>
@@ -33,7 +33,7 @@ const Navigation = ({ isLoaded }) => {
 			{simpleNav ? null :
 				<div id='nav-bar-bottom'>
 
-					<div onClick={() => history.push('/store')}>My Twintendo Store</div>
+					<button onClick={() => history.push('/store')}>My Twintendo Store</button>
 					<div>Games</div>
 					<div>Twintendo Switch</div>
 					<div>News & Events</div>
