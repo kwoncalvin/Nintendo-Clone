@@ -16,17 +16,21 @@ const ProductFormPage = () => {
             return state.products.singleProduct;
         return null;
     })
-
+    let date;
+    if (!isCreate) {
+        date = new Date(product.releaseDate)
+        date = date.toISOString().split('T')[0]
+    }
     const [name, setName] = useState(product ? product.name : "");
     const [descriptionHeader, setDescriptionHeader] = useState(product ? product.descriptionHeader : "");
     const [description, setDescription] = useState(product ? product.description : "");
-    const [releaseDate, setReleaseDate] = useState(product ? product.releaseDate : "");
+    const [releaseDate, setReleaseDate] = useState(product ? date : "");
     const [imageUrl, setImageUrl] = useState(product ? product.imageUrl : "");
     const [errors, setErrors] = useState({});
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log('**************')
+
         let errs = {};
         if (!name) errs.name = "Name is required";
         else if (name.length > 255) errs.name = "Name must be less than 255 characters long";
@@ -38,26 +42,18 @@ const ProductFormPage = () => {
             errs.imageUrl = "Image URL must end in .png, .jpg, or .jpeg";
         }
 
-        // const formData = new FormData();
-        // formData.append("name", name);
-        // formData.append("description_header", descriptionHeader);
-        // formData.append("description", description);
-        // formData.append("release_date", releaseDate);
-        // formData.append("image_url", imageUrl);
-
         let payload = {
-            name,
-            descriptionHeader,
-            description,
-            releaseDate,
-            imageUrl
+            'name': name,
+            'description_header': descriptionHeader,
+            'description': description,
+            'release_date': releaseDate,
+            'image_url': imageUrl
         }
 
         if (errs) setErrors({...errs})
         let product = await dispatch((isCreate? postProduct(payload) : putProduct(payload, productId)))
             .catch(async (res) => {
                 const data = await res.json();
-                console.log("*******************")
                 if (data && data.errors) {
                     setErrors({...data.errors, ...errs})
                 }
@@ -66,7 +62,6 @@ const ProductFormPage = () => {
             history.push(`/store/products/${product.id}`)
         }
     }
-
     return (
         <div>
             <form onSubmit={handleSubmit}>

@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 
 import { getProduct } from "../../store/products";
+import OpenModalButton from "../OpenModalButton"
+import DeleteModal from "../DeleteModal";
 
 
 const ProductPage = () => {
@@ -39,6 +41,12 @@ const ProductPage = () => {
                         <div>Price</div>
                         <button>Add to Cart</button>
                         <button onClick={() => history.push(`/store/products/${productId}/edit`)}>Edit</button>
+                        <OpenModalButton
+                            buttonText="Delete"
+                            modalComponent={
+                                <DeleteModal productId={productId} />
+                            }
+                        ></OpenModalButton>
                     </div>
                 </div>
             </div>

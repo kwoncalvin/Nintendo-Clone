@@ -37,17 +37,12 @@ const initialState = {
 
 
 export const postProduct = (product) => async (dispatch) => {
-	const {name, descriptionHeader, description, releaseDate, imageUrl} = product;
-	const formData = new FormData();
-	formData.append("name", name);
-	formData.append("description_header", descriptionHeader);
-	formData.append("description", description);
-	formData.append("release_date", releaseDate);
-	formData.append("image_url", imageUrl);
-
 	const res = await fetch("/api/products/new", {
         method: "POST",
-        body: formData,
+        headers: {
+			"Content-Type": "application/json",
+		},
+        body: JSON.stringify(product)
     });
 
     if (res.ok) {
@@ -86,21 +81,13 @@ export const getProduct = (id) => async (dispatch) => {
 }
 
 export const putProduct = (product, id) => async (dispatch) => {
-	console.log('heloo')
-	const {name, descriptionHeader, description, releaseDate, imageUrl} = product;
-	const formData = new FormData();
-	formData.append("name", name);
-	formData.append("description_header", descriptionHeader);
-	formData.append("description", description);
-	formData.append("release_date", releaseDate);
-	formData.append("image_url", imageUrl);
-	formData.append('productId', id)
-
-	const res = await fetch(`/api/products/${id}`, {
+	const res = await fetch(`/api/products/${id}/update`, {
         method: "PUT",
-        body: formData,
+		headers: {
+			"Content-Type": "application/json",
+		},
+        body: JSON.stringify(product)
     });
-	console.log('*******************************')
 
     if (res.ok) {
         const data = await res.json();
@@ -111,7 +98,7 @@ export const putProduct = (product, id) => async (dispatch) => {
 }
 
 export const deleteProduct = (id) => async (dispatch) => {
-	const res = await fetch(`/api/products/${id}`, {
+	const res = await fetch(`/api/products/${id}/delete`, {
         method: "DELETE"
     })
 
@@ -154,7 +141,7 @@ const productsReducer = (state = initialState, action) => {
 				singleProduct: {}
 			}
 			delete res.allProducts[action.id]
-			delete res.currentProductsProducts[action.id]
+			delete res.currentProducts[action.id]
 			return res
 		default:
 			return state;
