@@ -41,18 +41,19 @@ def create_product():
     """
     form = ProductForm()
     form['csrf_token'].data = request.cookies['csrf_token']
+
     if form.validate_on_submit():
         # image = form.data["image_url"]
         # image.filename = get_unique_filename(image.filename)
         # upload = upload_file_to_s3(image)
         new_product = Product(
             user_id = current_user.id,
-            name = form.data['name'],
-            description_header = form.data['description_header'],
-            description = form.data['description'],
-            release_date = form.data['release_date'],
+            name = form.name.data,
+            description_header = form.description_header.data,
+            description = form.description.data,
+            release_date = form.release_date.data,
             # imageUrl =  upload['url'],
-            image_url = form.data['image_url']
+            image_url = form.image_url.data
         )
         db.session.add(new_product)
         db.session.commit()
@@ -60,7 +61,7 @@ def create_product():
         return {"new_product": new_product.to_dict()}
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
-@product_routes.route('/<int:productId>', methods=["PUT"])
+@product_routes.route('/<int:productId>/update', methods=["PUT"])
 @login_required
 def update_product(productId):
     product = Product.query.get(productId)
@@ -71,22 +72,16 @@ def update_product(productId):
     """
     This route will update a product.
     """
-    req = request.get_json()
-    print(request.data)
+
     form = ProductForm()
-    print(form)
     form['csrf_token'].data = request.cookies['csrf_token']
-    print(form.data['name'])
-    print(form.data['description_header'])
-    print(form.data['description'])
-    print(form.data['release_date'])
-    print(form.data['image_url'])
+
     if form.validate_on_submit():
-        product.name = form.data['name']
-        product.description_header = form.data['description_header']
-        product.description = form.data['description']
-        product.release_date = form.data['release_date']
-        product.image_url = form.data['image_url']
+        product.name = form.name.data
+        product.description_header = form.description_header.data
+        product.description = form.description.data
+        product.release_date = form.release_date.data
+        product.image_url = form.image_url.data
 
         db.session.commit()
         return {"updated_product": product.to_dict()}
