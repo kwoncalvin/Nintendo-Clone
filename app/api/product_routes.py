@@ -89,11 +89,11 @@ def update_product(productId):
 
 @product_routes.route("/<int:productId>/delete", methods=['DELETE'])
 @login_required
-def delete_product(product_id):
+def delete_product(productId):
     """
     This route will delete a product.
     """
-    product = Product.query.get(product_id)
+    product = Product.query.get(productId)
 
     if product is None:
         return {'errors': ['product does not exist']}, 404

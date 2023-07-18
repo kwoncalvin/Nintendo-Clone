@@ -98,7 +98,7 @@ export const putProduct = (product, id) => async (dispatch) => {
 }
 
 export const deleteProduct = (id) => async (dispatch) => {
-	const res = await fetch(`/api/products/${id}`, {
+	const res = await fetch(`/api/products/${id}/delete`, {
         method: "DELETE"
     })
 
@@ -141,7 +141,7 @@ const productsReducer = (state = initialState, action) => {
 				singleProduct: {}
 			}
 			delete res.allProducts[action.id]
-			delete res.currentProductsProducts[action.id]
+			delete res.currentProducts[action.id]
 			return res
 		default:
 			return state;
