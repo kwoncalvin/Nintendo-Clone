@@ -1,10 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 
 import { getProduct } from "../../store/products";
 import OpenModalButton from "../OpenModalButton"
 import DeleteModal from "../DeleteModal";
+
+import { postCartItem } from "../../store/cart_items";
 
 
 const ProductPage = () => {
@@ -28,7 +30,15 @@ const ProductPage = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        let payload = {
+            'product_id': productId,
+            'quantity': quantity
+        }
 
+        let cartItem = await dispatch(postCartItem(payload))
+        if (cartItem) {
+
+        }
     }
 
 

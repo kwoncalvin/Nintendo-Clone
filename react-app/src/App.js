@@ -47,6 +47,9 @@ function App() {
           <Route exact path = '/current/products'>
             <ManageProductsPage/>
           </Route>
+          <Route exact path = '/cart'>
+
+          </Route>
         </Switch>
       )}
     </>

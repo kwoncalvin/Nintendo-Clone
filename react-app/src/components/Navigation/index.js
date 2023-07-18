@@ -22,7 +22,7 @@ const Navigation = ({ isLoaded }) => {
 					<div id='nav-bar-top-right'>
 						<div>Support</div>
 						<div>Wish List</div>
-						<div>Cart</div>
+						<button onClick={() => history.push('/cart')}>Cart</button>
 						<div>
 							{isLoaded && <ProfileButton user={sessionUser}/>}
 						</div>

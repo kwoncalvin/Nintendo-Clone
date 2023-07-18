@@ -23,7 +23,7 @@ def add_cart_item():
     req = request.get_json()
 
     quantity = req['quantity']
-    productId = req['productId']
+    productId = req['product_id']
 
     new_cart_item = CartItem(
         user_id = current_user.id,
