@@ -17,7 +17,6 @@ const ProductPage = () => {
     const productId = params.productId;
 
     const [quantity, setQuantity] = useState(1);
-    const [overflow, setOverflow] = useState('auto')
 
     const product = useSelector((state) => {
         if (productId == state.products.singleProduct.id)
@@ -45,17 +44,19 @@ const ProductPage = () => {
 
 
     return (
-        <div className="dodge-nav">
-            <div>
-                <div>
+        <div className="product-page-wrapper dodge-nav">
+            <div className="product-box">
+                <div className="product-path">
                     <div>Store</div>
                     <div>{'>'}</div>
                     <div>Games</div>
                     <div>{'>'}</div>
                     <div>{product.name}</div>
                 </div>
-                <div>
-                    <img src={product.imageUrl}/>
+                <div className="product-content">
+                    <div className="product-img">
+                        <img src={product.imageUrl}/>
+                    </div>
                     <div>
                         <div>Twintendo Switch</div>
                         <div>{product.name}</div>
@@ -78,12 +79,14 @@ const ProductPage = () => {
                     </div>
                 </div>
             </div>
-            <div>
-                <div>
-                    <div>{product.descriptionHeader}</div>
+            <div className='product-bottom-section'>
+                <div className="product-description">
+                    <h3>{product.descriptionHeader}</h3>
                     <div>{product.description}</div>
                 </div>
-                <img src={product.imageUrl}/>
+                <div className='product-desc-img'>
+                    <img src={product.imageUrl}/>
+                </div>
             </div>
         </div>
     )
