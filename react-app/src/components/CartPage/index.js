@@ -19,7 +19,7 @@ const CartPage = () => {
     }, [dispatch])
 
     return (
-        <div>
+        <div className="dodge-nav">
             <h2>Shopping cart</h2>
             <div>
                 <div>Home</div>

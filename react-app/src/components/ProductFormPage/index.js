@@ -63,7 +63,7 @@ const ProductFormPage = () => {
         }
     }
     return (
-        <div>
+        <div className="dodge-nav">
             <form onSubmit={handleSubmit}>
                 <input
                     placeholder="Name"
