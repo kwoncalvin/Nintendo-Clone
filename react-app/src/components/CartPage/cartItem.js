@@ -35,10 +35,12 @@ const CartItem = ({cartItem}) => {
     }
 
     return (
-        <div>
-            <img/>
+        <div className="cart-item-wrapper">
+            <div className="cart-item-img">
+                <img src={cartItem.Product.imageUrl}/>
+            </div>
             <div>
-                <h4>Item Title</h4>
+                <h4>{cartItem.Product.name}</h4>
                 <div>WishList</div>
             </div>
             <div>
