@@ -17,7 +17,7 @@ const ManageProductsPage = () => {
     }, [dispatch])
 
     return (
-        <div>
+        <div className="dodge-nav">
             <h2>Current Products</h2>
             {Object.values(products).map((product) => {
                 return (

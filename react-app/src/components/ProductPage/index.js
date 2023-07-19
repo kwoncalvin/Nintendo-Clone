@@ -17,6 +17,7 @@ const ProductPage = () => {
     const productId = params.productId;
 
     const [quantity, setQuantity] = useState(1);
+    const [overflow, setOverflow] = useState('auto')
 
     const product = useSelector((state) => {
         if (productId == state.products.singleProduct.id)
@@ -43,9 +44,8 @@ const ProductPage = () => {
     }
 
 
-
     return (
-        <div>
+        <div className="dodge-nav">
             <div>
                 <div>
                     <div>Store</div>
