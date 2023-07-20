@@ -44,19 +44,19 @@ const CartPage = () => {
                     <div className="order-summary">
                         <h3>Order summary</h3>
                         <h4>Promotional code</h4>
-                        <div>
+                        <div className="space-between">
                             <h4>Item(s) subtotal</h4>
                             <h4>Price</h4>
                         </div>
-                        <div>
+                        <div className="space-between">
                             <h4>Shipping</h4>
                             <h4>Free</h4>
                         </div>
-                        <div>
+                        <div className="space-between">
                             <h4>Estimated tax</h4>
                             <h4>Free</h4>
                         </div>
-                        <div>
+                        <div className="space-between">
                             <h3>Estimated total</h3>
                             <h3>Price</h3>
                         </div>
