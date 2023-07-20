@@ -47,6 +47,12 @@ function ProfileButton({ user }) {
     history.push("/signup");
   };
 
+  const manage = (e) => {
+    e.preventDefault();
+    closeMenu();
+    history.push("/current/products");
+  };
+
   const ulClassName = "profile-dropdown" + (showMenu ? "" : " hidden");
   const body = document.querySelector("body")
   if (showMenu) body.style.overflow = 'hidden'
@@ -73,18 +79,26 @@ function ProfileButton({ user }) {
             <>
               <div id='yes-user-wrap'>
                 <div className="right-modal-header">
-                  <h2>Welcome User</h2>
-                  <div>X</div>
+                  <h2>Welcome {user.nickname}</h2>
+                  <i class="fa-solid fa-circle-xmark" onClick={closeMenu}></i>
                 </div>
                 <div className="right-modal-info">
                   <div id='yes-user-box'>
-                    <img src='https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.0/c_scale,w_300/Dev/Global%20Navigation/unauthd-asset.png'/>
-                    <button onClick={() => history.push('/current/products')}>Manage Products</button>
-                    <div>With a free account, you can</div>
-                    <div>Shop online</div>
-                    <div>Earn My Twintendo points</div>
-                    <div>Save a Wish List</div>
+                    <div id='yes-user-info'>
+                      <img src={user.imageUrl ? user.imageUrl : 'https://icon-library.com/images/default-profile-icon/default-profile-icon-6.jpg'}/>
+                      <div>
+                        <h2>{user.nickname}</h2>
+                        <p>{user.email}</p>
+                      </div>
+                    </div>
+                    <div id='products-posted'>
+                      <img src='https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.0/c_scale,w_100/Design%20System/Component%20Library/Icon/my-nintendo-gold-coin.png'/>
+                      <div>Products Posted</div>
+                      <div className="bold">{user.products}</div>
+                    </div>
+                    <button id='manage-products' onClick={manage}>Manage Products</button>
                   </div>
+                  <div id='yes-user-space'></div>
                   <div className="user-info-links">
                     <button>Wish List</button>
                     <button>Order history</button>
@@ -95,7 +109,10 @@ function ProfileButton({ user }) {
                     <button>Redeem code</button>
                     <button>Account settings</button>
                   </div>
-                  <button onClick={signout}>Sign Out</button>
+                  <button id='signout-button' onClick={signout}>
+                    Sign Out
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                  </button>
                 </div>
               </div>
             </>
@@ -104,18 +121,18 @@ function ProfileButton({ user }) {
               <div id='no-user-wrap'>
                 <div className="right-modal-header">
                   <h2>Log in / Sign up</h2>
-                  <div>X</div>
+                  <i class="fa-solid fa-circle-xmark" onClick={closeMenu}></i>
                 </div>
                 <div className="right-modal-info">
                   <div id='no-user-box'>
                     <img src='https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.0/c_scale,w_300/Dev/Global%20Navigation/unauthd-asset.png'/>
                     <div>With a free account, you can</div>
-                    <div>Shop online</div>
-                    <div>Earn My Twintendo points</div>
-                    <div>Save a Wish List</div>
+                    <div><i class="fa-solid fa-check"></i>Shop online</div>
+                    <div><i class="fa-solid fa-check"></i>Post products</div>
+                    <div><i class="fa-solid fa-check"></i>Save a Wish List</div>
                   </div>
-                  <button onClick={login}>Log in</button>
-                  <button onClick={signup}>Sign up</button>
+                  <button id='login-button' onClick={login}>Log in</button>
+                  <button id='signup-button' onClick={signup}>Sign up</button>
                   <div className="user-info-links">
                     <button>Order Status</button>
                   </div>
