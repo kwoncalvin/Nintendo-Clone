@@ -22,9 +22,21 @@ const LoginFormPage = () => {
     }
   };
 
-  const demoUser = async (e) => {
+  const demoUser1 = async (e) => {
     e.preventDefault()
     let email = "demo@aa.io"
+    let password = "password"
+    const data = await dispatch(login(email, password));
+    if (data) {
+      setErrors(data);
+    } else {
+      history.push("/")
+    }
+  }
+
+  const demoUser2 = async (e) => {
+    e.preventDefault()
+    let email = "marnie@aa.io"
     let password = "password"
     const data = await dispatch(login(email, password));
     if (data) {
@@ -48,7 +60,7 @@ const LoginFormPage = () => {
             <input
               type="text"
               value={email}
-              placeholder="E-mail address/Sign-in ID"
+              placeholder="E-mail address"
               onChange={(e) => setEmail(e.target.value)}
               required
             />
@@ -62,13 +74,14 @@ const LoginFormPage = () => {
               required
             />
 
-          <button type="submit">Sign in</button>
-          <div>
-            <div>Sign in with</div>
-            <button onClick={demoUser}>Demo User</button>
+          <button className='login-submit' type="submit">Sign in</button>
+          <div className="sign-in-with">
+            <p>Sign in with</p>
+            <button id='demo1' onClick={demoUser1}>Demo User 1</button>
+            <button id='demo2' onClick={demoUser2}>Demo User 2</button>
           </div>
-          <div>Don't have an account?</div>
-          <button onClick={() => history.push('/signup')}>Create a Twintendo Account</button>
+          <div id='signup-link'>Don't have an account?</div>
+          <button id='create-account' onClick={() => history.push('/signup')}>Create a Twintendo Account</button>
         </form>
       </div>
     </div>

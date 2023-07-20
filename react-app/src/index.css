@@ -23,3 +23,8 @@ h2 {
     width: 100%;
     top: 3.2rem;
 }
+
+* {
+    font-family: 'Geologica';
+    color: rgb(66, 66, 66)
+}

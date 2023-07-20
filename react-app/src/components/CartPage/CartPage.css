@@ -11,11 +11,13 @@
     max-width: 72rem;
     border: 1px solid black;
     margin-top: 2rem;
+
 }
 
 .cart-content {
     display: flex;
     flex-direction: row;
+    gap: 2rem;
 }
 
 .cart-items-list {
@@ -27,7 +29,9 @@
 }
 
 .order-summary {
-
+    width: 20rem;
+    padding: 1rem;
+    background-color: rgb(247, 247, 247);
 }
 
 .cart-item-wrapper {
@@ -46,4 +50,9 @@
 .cart-item-img > img {
     max-width: 10rem;
     max-height: 5.6rem;
+}
+
+.space-between {
+    display: flex;
+    justify-content: space-between;
 }

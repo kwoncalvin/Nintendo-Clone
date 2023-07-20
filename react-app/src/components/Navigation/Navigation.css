@@ -48,6 +48,7 @@
   left: 44%;
   right: 44%;
   text-align: center;
+  font-size: 11px;
 }
 
 #nav-bar-top-right {
@@ -84,6 +85,13 @@
   align-items: center;
   justify-content: space-between;
   margin-bottom: 2rem;
+  font-size: 14px;
+}
+
+.right-modal-header > i {
+  font-size: 24px;
+  color: rgb(189, 189, 189);
+  cursor: pointer;
 }
 
 .right-modal-info {
@@ -102,4 +110,102 @@
 .user-info-links {
   display: flex;
   flex-direction: column;
+}
+
+#yes-user-box {
+  display: flex;
+  position: fixed;
+  flex-direction: column;
+  width: 24rem;
+  height: 15rem;
+  background-color: white;
+  right: 1.5rem;
+  border: 1px solid rgb(202, 202, 202);
+  border-radius: 15px;
+}
+
+#yes-user-space {
+  height: 17rem
+}
+
+#yes-user-info {
+  display: flex;
+  height: 6rem;
+  margin: 1rem 3rem;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+#yes-user-info > img {
+  width: 6rem;
+  border-radius: 50px;
+}
+
+#yes-user-info p {
+  margin: 0;
+  color: rgb(179, 179, 179);
+}
+
+#products-posted {
+  display: flex;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgb(141, 141, 141);
+  width: 100%;
+  justify-content: center;
+  gap: 1rem;
+}
+
+#products-posted img {
+  width: 1.5rem;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+#manage-products {
+  margin: 1rem;
+  background-color: white;
+  border: none;
+  color: #e60012;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#signout-button {
+  background-color: rgb(57, 70, 160);
+  color: white;
+  border: none;
+  cursor: pointer;
+  height: 3rem;
+  border-radius: 8px;
+  margin-top: 1.5rem;
+  font-size: 18px;
+}
+
+#signout-button > i {
+  color: white;
+  margin-left: 1rem;
+}
+
+#login-button {
+  border: none;
+  background-color: rgb(230, 0, 18);
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  height: 3rem;
+  border-radius: 8px;
+  margin-top: 1.5rem;
+}
+
+#signup-button {
+  border: 1px solid rgb(230, 0, 18);
+  background-color: white;
+  color: rgb(230, 0, 18);
+  font-size: 18px;
+  cursor: pointer;
+  height: 3rem;
+  border-radius: 8px;
+  margin-top: .7rem;
 }

@@ -18,6 +18,10 @@
 
 .product-path {
     display: flex;
+    background-image: url('https://media.discordapp.net/attachments/1128785113287753760/1131522101128466483/image.png');
+    background-repeat: repeat-x;
+    background-size: 40px;
+    z-index: 1;
 }
 
 .product-content {

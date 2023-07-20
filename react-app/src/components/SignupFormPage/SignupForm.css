@@ -1,0 +1,116 @@
+#signup-page-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(241, 241, 241);
+    height: 100vh;
+    padding-top: 1.5rem;
+}
+
+#signup-page-wrapper h1 {
+    font-size: 22px;
+    font-weight: normal;
+}
+
+.signup-box {
+    display: flex;
+    flex-direction: column;
+    width: 48rem;
+    margin: .7rem 0;
+    background-color: white;
+    border-radius: 8px;
+    justify-content: center;
+    align-items: center;
+}
+
+.signup-box p {
+    font-size: 13px;
+    padding: 0.5rem;
+}
+
+#demo-signup {
+    margin: 0 2rem 2rem 2rem;
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    justify-content: center;
+
+
+}
+
+#demo-1 {
+    display: flex;
+    width: 42%;
+    height: 2rem;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border: 1px solid rgb(151, 151, 151);
+    border-radius: 80px;
+    font-size: 12px;
+    cursor: pointer;
+}
+#demo-2 {
+    display: flex;
+    width: 42%;
+    height: 2rem;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    border: none;
+    border-radius: 80px;
+    color: white;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+#signup-form {
+    display: flex;
+    flex-direction: column;
+    margin: .5rem;
+    width: 35rem;
+    background-color: rgb(241, 241, 241);
+    padding: 1rem 6rem 2rem 6rem;
+}
+
+.signup-input {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    align-items: center;
+}
+
+.signup-input > div {
+    font-size: 12px;
+    border-left: 4px rgb(58, 58, 58) solid;
+    height: fit-content;
+    display: flex;
+    padding-left: 8px;
+}
+
+.signup-input > input {
+    font-size: 12px;
+    height: 2rem;
+    display: flex;
+    width: 55%;
+    border-radius: 8px;
+    border: 1px solid rgb(151, 151, 151);;
+    padding: 0 1rem;
+}
+
+.signup-submit {
+    display: flex;
+    background-color: #e60012;
+    align-self: center;
+    width: 7rem;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 11px;
+    height: 2rem;
+    padding: 0;
+    border: none;
+    border-radius: 80px;
+    cursor: pointer;
+    margin-top: 2rem;
+}
