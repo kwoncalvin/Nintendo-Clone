@@ -8,10 +8,11 @@ const Navigation = ({ isLoaded }) => {
 	const history = useHistory();
 	const sessionUser = useSelector(state => state.session.user);
 	const location = useLocation();
-	const simpleNav = location.pathname === '/login' || location.pathname === '/signup'
+	const simpleNav = location.pathname === '/login' || location.pathname === '/signup';
+	const clearNav = location.pathname === '/';
 
 	return (
-		<div id='nav-bar-wrapper'>
+		<div id={clearNav ? 'nav-bar-wrapper-clear' : 'nav-bar-wrapper'}>
 			<div id='nav-bar-top'>
 				<div id='nav-bar-top-left'>
 					<img id='logo' src='/logo.png' onClick={() => history.push('/')}/>
@@ -26,7 +27,7 @@ const Navigation = ({ isLoaded }) => {
 						<div>
 							{isLoaded && <ProfileButton user={sessionUser}/>}
 						</div>
-						<div>Flag</div>
+						<img src='https://cdn.discordapp.com/attachments/1128785113287753760/1131736348471079063/FlagUsaIconRegionSelect.png'/>
 					</div>
 				}
 			</div>

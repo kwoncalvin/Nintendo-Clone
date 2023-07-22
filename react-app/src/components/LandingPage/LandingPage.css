@@ -7,3 +7,38 @@
     background-size: cover;
     z-index: 1;
 }
+
+
+#landing-title {
+    display: flex;
+    margin-top: 20rem;
+    height: 6rem;
+    margin-left: 8rem;
+    gap: 4rem;
+    align-items: center;
+}
+
+#shop-twintendo {
+    color: black;
+    font-size: 55px;
+}
+
+#landing-button {
+    display: flex;
+    background-color: rgba(255,0,0);
+    color: white;
+    border: none;
+    height: 3.5rem;
+    width: 12rem;
+    border-radius: 10px;
+    font-size: 22px;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    border: 1px gray solid;
+    cursor: pointer;
+}
+
+#landing-button > img {
+    height: 2rem;
+}

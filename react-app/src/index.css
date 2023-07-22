@@ -13,13 +13,14 @@ h2 {
 }
 
 .dodge-nav {
-    position: absolute;
+    position: relative;
     width: 100%;
     top: 6rem;
+    margin-bottom: 7rem;
 }
 
 .dodge-small-nav {
-    position: absolute;
+    position: relative;
     width: 100%;
     top: 3.2rem;
 }
@@ -27,4 +28,9 @@ h2 {
 * {
     font-family: 'Geologica';
     color: rgb(66, 66, 66)
+}
+
+#content-wrap {
+    min-height: 100vh;
+
 }

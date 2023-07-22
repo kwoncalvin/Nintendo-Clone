@@ -5,8 +5,9 @@ import { useParams, useHistory } from "react-router-dom";
 import { getProduct } from "../../store/products";
 import OpenModalButton from "../OpenModalButton"
 import DeleteModal from "../DeleteModal";
+import AddToCart from './AddToCart'
 
-import { postCartItem } from "../../store/cart_items";
+
 import './ProductPage.css'
 
 
@@ -28,19 +29,6 @@ const ProductPage = () => {
         dispatch(getProduct(productId));
     }, [dispatch, productId])
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-
-        let payload = {
-            'product_id': productId,
-            'quantity': quantity
-        }
-
-        let cartItem = await dispatch(postCartItem(payload))
-        if (cartItem) {
-
-        }
-    }
 
 
     return (
@@ -67,7 +55,7 @@ const ProductPage = () => {
                                 {quantity}
                                 <button onClick={() => setQuantity(quantity + 1)}>+</button>
                             </div>
-                            <button onClick={handleSubmit}>Add to Cart</button>
+                            <AddToCart product={product} quantity={quantity}/>
                         </div>
                         <button onClick={() => history.push(`/store/products/${productId}/edit`)}>Edit</button>
                         <OpenModalButton
