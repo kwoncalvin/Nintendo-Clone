@@ -1,0 +1,107 @@
+#store-background {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    position: absolute;
+    z-index: -1;
+}
+
+#red-backing {
+    display: flex;
+    width: 100%;
+    background-color: rgb(230, 0, 18);
+    height: 25rem;
+}
+
+#red-backing > img {
+    width: 14rem;
+}
+
+#banner-separation {
+    height: 1.3rem;
+    background-image: url('https://media.discordapp.net/attachments/1128785113287753760/1132066032576643242/image.png');
+    background-repeat: repeat-x;
+    background-size: auto;
+    display: flex;
+}
+
+#bottom-banner {
+    height: 1.3rem;
+    background-image: url('https://media.discordapp.net/attachments/1128785113287753760/1132071583037530123/image.png');
+    background-repeat: repeat-x;
+    background-size: auto;
+    display: flex;
+}
+
+#store-background > img {
+    height: 20rem;
+}
+
+#store-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+#store-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 90rem;
+    margin-top: 3rem;
+}
+
+#my-store {
+    display: flex;
+    justify-content: space-between;
+}
+
+#my-twintendo-store {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+#my-twintendo-store > img {
+    width: 16rem;
+}
+
+#my-twintendo-store > h1 {
+    color: white;
+    font-size: 48px;
+    margin: 1rem 0;
+}
+
+#random-product {
+    border: 1px solid black;
+    display: flex;
+    width: 59rem;
+    height: 35rem;
+    box-shadow: rgba(0, 0, 0, 0.7) 0px 4px 16px 0px;
+}
+
+#categories {
+    display: flex;
+    padding: 2.5rem 0;
+    border-bottom: 1px solid rgb(207, 207, 207);
+    justify-content: center;
+    gap: 2rem;
+}
+
+.category-button {
+    display: flex;
+    flex-direction: column;
+    width: 15rem;
+    background-color: white;
+    align-items: center;
+    justify-content: center;
+    height: 10rem;
+    font-size: 20px;
+    gap: 1rem;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.7) 0px 4px 16px 0px;
+}
+
+.category-button > img {
+    width: 5rem
+}

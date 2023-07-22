@@ -28,6 +28,39 @@
   z-index: 1;
 }
 
+#nav-bar-wrapper-clear {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+}
+
+#nav-bar-wrapper-clear #nav-bar-bottom > div {
+  color: black;
+  text-shadow:  white 0px 0px 10px,
+                white 0px 0px 10px,
+                white 0px 0px 10px,
+                white 0px 0px 10px;
+}
+
+#nav-bar-wrapper-clear #nav-bar-top-left > div {
+  color: black;
+  text-shadow:  white 0px 0px 10px,
+                white 0px 0px 10px,
+                white 0px 0px 10px,
+                white 0px 0px 10px;
+}
+
+#nav-bar-wrapper-clear #nav-bar-top-right > div {
+  color: black;
+
+  text-shadow:  white 0px 0px 10px,
+                white 0px 0px 10px,
+                white 0px 0px 10px,
+                white 0px 0px 10px;
+}
+
 #nav-bar-top {
   display: flex;
   flex-direction: row;
