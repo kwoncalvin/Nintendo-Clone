@@ -75,16 +75,17 @@ const ProductFormPage = () => {
         if (errs) {
             setErrors({...errs})
             return;
-        }
-        let product = await dispatch((isCreate? postProduct(payload) : putProduct(payload, productId)))
-            .catch(async (res) => {
-                const data = await res.json();
-                if (data && data.errors) {
-                    setErrors({...data.errors, ...errs})
-                }
-            });
-        if (product) {
-            history.push(`/store/products/${product.id}`)
+        } else {
+            let product = await dispatch((isCreate? postProduct(payload) : putProduct(payload, productId)))
+                .catch(async (res) => {
+                    const data = await res.json();
+                    if (data && data.errors) {
+                        setErrors({...data.errors, ...errs})
+                    }
+                });
+            if (product) {
+                history.push(`/store/products/${product.id}`)
+            }
         }
     }
     return (
