@@ -4,6 +4,8 @@ import { useParams, useHistory } from "react-router-dom";
 
 import { postProduct, putProduct } from "../../store/products";
 
+import './ProductFormPage.css'
+
 const ProductFormPage = () => {
     const dispatch = useDispatch();
     const history = useHistory();
@@ -83,101 +85,143 @@ const ProductFormPage = () => {
         }
     }
     return (
-        <div className="dodge-nav">
-            <form onSubmit={handleSubmit}>
-                <input
-                    placeholder="Name"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    defaultValue={isCreate ? '' : name}
-                />
-                {errors.name && (
-                        <p className="error">{errors.name}</p>
-                )}
-                <input
-                    placeholder="Price"
-                    value={price}
-                    onChange={(e) => setPrice(e.target.value)}
-                    defaultValue={isCreate ? '' : price}
-                />
-                {errors.price && (
-                        <p className="error">{errors.price}</p>
-                )}
-                <input
-                    placeholder="Description Header"
-                    value={descriptionHeader}
-                    onChange={(e) => setDescriptionHeader(e.target.value)}
-                    defaultValue={isCreate ? '' : descriptionHeader}
-                />
-                {errors.descriptionHeader && (
-                        <p className="error">{errors.descriptionHeader}</p>
-                )}
-                <input
-                    placeholder="Description"
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                    defaultValue={isCreate ? '' : description}
-                />
-                {errors.description && (
-                        <p className="error">{errors.description}</p>
-                )}
-                <input
-                    type="date"
-                    placeholder="Release Date"
-                    value={releaseDate}
-                    onChange={(e) => setReleaseDate(e.target.value)}
-                    defaultValue={isCreate ? '' : releaseDate}
-                />
-                {errors.releaseDate && (
-                        <p className="error">{errors.releaseDate}</p>
-                )}
-                <input
-                    placeholder="Image URL"
-                    value={imageUrl}
-                    onChange={(e) => setImageUrl(e.target.value)}
-                    defaultValue={isCreate ? '' : imageUrl}
-                />
-                {errors.imageUrl && (
-                        <p className="error">{errors.imageUrl}</p>
-                )}
-                <input
-                    placeholder="Description Image URL"
-                    value={descImageUrl}
-                    onChange={(e) => setDescImageUrl(e.target.value)}
-                    defaultValue={isCreate ? '' : descImageUrl}
-                />
-                {errors.descImageUrl && (
-                        <p className="error">{errors.descImageUrl}</p>
-                )}
-                <input
-                    placeholder="Category"
-                    value={category}
-                    onChange={(e) => setCategory(e.target.value)}
-                    defaultValue={isCreate ? '' : category}
-                />
-                {errors.category && (
+        <div id='product-form-page-wrapper' className="dodge-nav">
+            <h1>Post a Product</h1>
+            <div className="product-form-box">
+                <form id='product-form' onSubmit={handleSubmit}>
+                    <label className="product-input">
+                        <div>Name</div>
+                        <input
+                            placeholder="Name"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            defaultValue={isCreate ? '' : name}
+                        />
+                    </label>
+                    {errors.name && (
+                            <p className="error">{errors.name}</p>
+                    )}
+                    <label className="product-input">
+                        <div>Price</div>
+                        <input
+                            placeholder="Price"
+                            value={price}
+                            onChange={(e) => setPrice(e.target.value)}
+                            defaultValue={isCreate ? '' : price}
+                        />
+                    </label>
+                    {errors.price && (
+                            <p className="error">{errors.price}</p>
+                    )}
+                    <label className="product-input">
+                        <div>Description Header</div>
+                        <input
+                            placeholder="Description Header"
+                            value={descriptionHeader}
+                            onChange={(e) => setDescriptionHeader(e.target.value)}
+                            defaultValue={isCreate ? '' : descriptionHeader}
+                        />
+                    </label>
+                    {errors.descriptionHeader && (
+                            <p className="error">{errors.descriptionHeader}</p>
+                    )}
+                    <label className="product-input">
+                        <div>Description</div>
+                        <input
+                            placeholder="Description"
+                            value={description}
+                            onChange={(e) => setDescription(e.target.value)}
+                            defaultValue={isCreate ? '' : description}
+                        />
+                    </label>
+                    {errors.description && (
+                            <p className="error">{errors.description}</p>
+                    )}
+                    <label className="product-input">
+                        <div>Image URL</div>
+                        <input
+                            placeholder="Image URL"
+                            value={imageUrl}
+                            onChange={(e) => setImageUrl(e.target.value)}
+                            defaultValue={isCreate ? '' : imageUrl}
+                        />
+                    </label>
+                    {errors.imageUrl && (
+                            <p className="error">{errors.imageUrl}</p>
+                    )}
+                    <label className="product-input">
+                        <div>Description Image URL</div>
+                        <input
+                            placeholder="Description Image URL"
+                            value={descImageUrl}
+                            onChange={(e) => setDescImageUrl(e.target.value)}
+                            defaultValue={isCreate ? '' : descImageUrl}
+                        />
+                    </label>
+                    {errors.descImageUrl && (
+                            <p className="error">{errors.descImageUrl}</p>
+                    )}
+                    <label className="product-input">
+                        <div>Color</div>
+                        <input
+                            placeholder="Color"
+                            value={color}
+                            onChange={(e) => setColor(e.target.value)}
+                            defaultValue={isCreate ? '' : color}
+                        />
+                    </label>
+                    {errors.color && (
+                            <p className="error">{errors.color}</p>
+                    )}
+                    <label className="product-input">
+                        <div>Category</div>
+                        <select
+                            onChange={(e) => setCategory(e.target.value)}
+                            defaultValue={isCreate ? '' : category}
+                        >
+                            <option value="" hidden>(select one)</option>
+                            <option value="game">Game</option>
+                            <option value="hardware">Hardware</option>
+                            <option value="merchandise">Merchandise</option>
+                        </select>
+                    </label>
+                    {errors.category && (
                         <p className="error">{errors.category}</p>
-                )}
-                <input
-                    placeholder="ESRB"
-                    value={esrb}
-                    onChange={(e) => setEsrb(e.target.value)}
-                    defaultValue={isCreate ? '' : esrb}
-                />
-                {errors.esrb && (
-                        <p className="error">{errors.esrb}</p>
-                )}
-                <input
-                    placeholder="Color"
-                    value={color}
-                    onChange={(e) => setColor(e.target.value)}
-                    defaultValue={isCreate ? '' : color}
-                />
-                {errors.color && (
-                        <p className="error">{errors.color}</p>
-                )}
-                <button type='submit'>Submit</button>
-            </form>
+                    )}
+                    {
+                        category == 'game' ?
+                        (<>
+                            <label className="product-input">
+                                <div>Release Date</div>
+                                <input
+                                    type="date"
+                                    placeholder="Release Date"
+                                    value={releaseDate}
+                                    onChange={(e) => setReleaseDate(e.target.value)}
+                                    defaultValue={isCreate ? '' : releaseDate}
+                                />
+                            </label>
+                            {errors.releaseDate && (
+                                    <p className="error">{errors.releaseDate}</p>
+                            )}
+                            <label className="product-input">
+                                <div>ESRB Rating</div>
+                                <input
+                                    placeholder="ESRB"
+                                    value={esrb}
+                                    onChange={(e) => setEsrb(e.target.value)}
+                                    defaultValue={isCreate ? '' : esrb}
+                                />
+                            </label>
+                            {errors.esrb && (
+                                    <p className="error">{errors.esrb}</p>
+                            )}
+                        </>) : null
+
+                    }
+                    <button className='product-submit' type='submit'>Submit</button>
+                </form>
+            </div>
         </div>
     )
 }

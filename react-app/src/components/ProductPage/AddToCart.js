@@ -51,8 +51,9 @@ function AddToCart({ product, quantity }) {
 
   return (
     <>
-        <button onClick={handleSubmit}>
-                Add to Cart
+        <button className='add-to-cart-button' onClick={handleSubmit}>
+          <i class="fa-solid fa-cart-shopping"></i>
+          <div>Add to cart</div>
         </button>
 
         <div className={backClassName}>

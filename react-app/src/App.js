@@ -10,6 +10,7 @@ import ManageProductsPage from "./components/ManageProductsPage";
 import ProductFormPage from "./components/ProductFormPage";
 import CartPage from "./components/CartPage";
 import Footer from "./components/Footer";
+import CategoryPage from "./components/CategoryPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 
@@ -37,6 +38,9 @@ function App() {
             </Route>
             <Route exact path = '/store'>
               <StorePage/>
+            </Route>
+            <Route exact path = '/store/:category'>
+              <CategoryPage/>
             </Route>
             <Route exact path = '/store/products/new'>
               <ProductFormPage/>

@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { login } from "../../store/session";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector} from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
 import './LoginForm.css';
 
@@ -10,15 +10,28 @@ const LoginFormPage = () => {
   const sessionUser = useSelector((state) => state.session.user);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [disabled, setDisabled] = useState(true)
   const [errors, setErrors] = useState([]);
 
+  useEffect(() => {
+    if (password.length < 6) {
+        setDisabled(true);
+    } else {
+        setDisabled(false);
+    }
+  }, [password]);
+
   if (sessionUser) return <Redirect to="/" />;
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
     if (data) {
       setErrors(data);
+    } else {
+      window.location.reload(true)
+      history.push("/")
     }
   };
 
@@ -30,6 +43,7 @@ const LoginFormPage = () => {
     if (data) {
       setErrors(data);
     } else {
+      window.location.reload(true)
       history.push("/")
     }
   }
@@ -42,6 +56,7 @@ const LoginFormPage = () => {
     if (data) {
       setErrors(data);
     } else {
+      window.location.reload(true)
       history.push("/")
     }
   }
@@ -53,7 +68,7 @@ const LoginFormPage = () => {
         <form id='login-form' onSubmit={handleSubmit}>
 
             {errors.map((error, idx) => (
-              <li key={idx}>{error}</li>
+              <li className='login-err' key={idx}>{error}</li>
             ))}
 
 
@@ -62,7 +77,6 @@ const LoginFormPage = () => {
               value={email}
               placeholder="E-mail address"
               onChange={(e) => setEmail(e.target.value)}
-              required
             />
 
 
@@ -71,17 +85,27 @@ const LoginFormPage = () => {
               value={password}
               placeholder="Password"
               onChange={(e) => setPassword(e.target.value)}
-              required
             />
 
-          <button className='login-submit' type="submit">Sign in</button>
+          <button
+            className={disabled? 'disabled-button': 'login-submit'}
+            type="submit"
+            disabled={disabled}
+          >
+          Sign in
+          </button>
           <div className="sign-in-with">
             <p>Sign in with</p>
             <button id='demo1' onClick={demoUser1}>Demo User 1</button>
             <button id='demo2' onClick={demoUser2}>Demo User 2</button>
           </div>
           <div id='signup-link'>Don't have an account?</div>
-          <button id='create-account' onClick={() => history.push('/signup')}>Create a Twintendo Account</button>
+          <button
+            id='create-account'
+            onClick={() => history.push('/signup')}
+          >
+            Create a Twintendo Account
+          </button>
         </form>
       </div>
     </div>
