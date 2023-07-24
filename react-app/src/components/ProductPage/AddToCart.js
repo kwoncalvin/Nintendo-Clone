@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import { postCartItem } from "../../store/cart_items";
@@ -11,6 +11,7 @@ function AddToCart({ product, quantity }) {
   const history = useHistory();
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
+  const user = useSelector((state) => state.session.user)
 
   useEffect(() => {
     if (!showMenu) return;
@@ -29,6 +30,9 @@ function AddToCart({ product, quantity }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (!user) {
+      history.push('/login')
+    }
     let payload = {
         'product_id': product.id,
         'quantity': quantity

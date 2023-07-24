@@ -41,14 +41,14 @@ const ProductPage = () => {
             'path' : 'Hardware',
             'border' : '3px solid rgb(114, 114, 114)',
             'link' : '/store/hardware',
-            'height' : '35rem'
+            'height' : '33rem'
         },
         'merchandise': {
             'category' : 'Merchandise',
             'path' : 'Merchandise',
             'border' : '3px solid #3946a0',
             'link' : '/store/merchandise',
-            'height' : '35rem'
+            'height' : '33rem'
         },
     }
 
@@ -95,7 +95,7 @@ const ProductPage = () => {
                             <AddToCart product={product} quantity={quantity}/>
                         </div>
                         {
-                            user.id === product.userId ?
+                            user && user.id === product.userId ?
                             (<div className="manage-buttons">
                                 <button className='product-edit' onClick={() => history.push(`/store/products/${productId}/edit`)}>Edit</button>
                                 <OpenModalButton

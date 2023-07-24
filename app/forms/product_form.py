@@ -8,7 +8,7 @@ class ProductForm(FlaskForm):
     price = DecimalField('Price', validators=[DataRequired()])
     description_header = StringField('Description Header', validators=[DataRequired(), Length(max=255)])
     description = TextAreaField('Description', validators=[DataRequired()])
-    release_date = DateField('Release Date', format='%Y-%m-%d', validators=[DataRequired()])
+    release_date = DateField('Release Date', format='%Y-%m-%d')
     image_url = StringField('ImageUrl', validators=[DataRequired()])
     desc_image_url = StringField('ImageUrl')
     category = StringField('Category', validators=[DataRequired()])
