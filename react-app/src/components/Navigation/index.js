@@ -27,6 +27,10 @@ const Navigation = ({ isLoaded }) => {
 		setCartQty(qty)
 	}, [cartItems, dispatch])
 
+	const manageLink = () => {
+		if (sessionUser) history.push('/current/products')
+		else history.push('/login')
+	}
 
 	return (
 		<div id={clearNav ? 'nav-bar-wrapper-clear' : 'nav-bar-wrapper'}>
@@ -64,7 +68,7 @@ const Navigation = ({ isLoaded }) => {
 					<div onClick={() => history.push('/store/games')}>Games</div>
 					<div onClick={() => history.push('/store/hardware')}>Hardware</div>
 					<div onClick={() => history.push('/store/merchandise')}>Merchandise</div>
-					<div onClick={() => history.push('/current/products')}>Manage Products</div>
+					<div onClick={manageLink}>Manage Products</div>
 					{/* <div>Twintendo Switch</div>
 					<div>News & Events</div>
 					<div>Play Twintendo</div> */}
