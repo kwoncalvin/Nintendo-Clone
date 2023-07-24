@@ -29,6 +29,9 @@ const LoginFormPage = () => {
     const data = await dispatch(login(email, password));
     if (data) {
       setErrors(data);
+    } else {
+      window.location.reload(true)
+      history.push("/")
     }
   };
 
@@ -40,6 +43,7 @@ const LoginFormPage = () => {
     if (data) {
       setErrors(data);
     } else {
+      window.location.reload(true)
       history.push("/")
     }
   }
@@ -52,6 +56,7 @@ const LoginFormPage = () => {
     if (data) {
       setErrors(data);
     } else {
+      window.location.reload(true)
       history.push("/")
     }
   }

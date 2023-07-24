@@ -36,24 +36,31 @@ const CartItem = ({cartItem}) => {
 
     return (
         <div className="cart-item-wrapper">
-            <div className="cart-item-img">
-                <img src={product.imageUrl}/>
-            </div>
-            <div>
-                <h4>{product.name}</h4>
-                <div>WishList</div>
-            </div>
-            <div>
-                <div>Quantity</div>
-                <div>
-                    <button onClick={decrease} disabled={cartItem.quantity == 1}>-</button>
-                    {cartItem.quantity}
-                    <button onClick={increase} disabled={cartItem.quantity == 1}>+</button>
+            <div className="cart-item-first-half">
+                <div className="cart-item-img" onClick={() => history.push(`/store/products/${product.id}`)}>
+                    <img src={product.imageUrl}/>
+                </div>
+                <div className="cart-item-name">
+                    <h4 onClick={() => history.push(`/store/products/${product.id}`)}>{product.name}</h4>
                 </div>
             </div>
-            <div>
-                <div>${product.price}</div>
-                <button onClick={remove}>Remove</button>
+            <div className="cart-item-second-half">
+                <div className="cart-item-quantity">
+                    <p>Quantity</p>
+                    <div className="ct-quantity-box">
+                        <button onClick={decrease} disabled={cartItem.quantity == 1}>
+                            <i class="fa-solid fa-minus"></i>
+                        </button>
+                        {cartItem.quantity}
+                        <button onClick={increase} disabled={cartItem.quantity == 10}>
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div className="cart-item-price">
+                    <div>${(product.price * cartItem.quantity).toFixed(2)}</div>
+                    <button onClick={remove}>Remove</button>
+                </div>
             </div>
         </div>
     )

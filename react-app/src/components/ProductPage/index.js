@@ -18,7 +18,7 @@ const ProductPage = () => {
     const productId = params.productId;
 
     const [quantity, setQuantity] = useState(1);
-
+    const user = useSelector((state) => state.session.user)
     const product = useSelector((state) => {
         if (productId == state.products.singleProduct.id)
             return state.products.singleProduct;
@@ -70,7 +70,7 @@ const ProductPage = () => {
                 <div className="product-path">
                     <div className="path-link" onClick={() => history.push('/store')}>Store</div>
                     <i class="fa-solid fa-greater-than"></i>
-                    <div className="path-link">{thisDict.path}</div>
+                    <div className="path-link" onClick={() => history.push(thisDict.link)}>{thisDict.path}</div>
                     <i class="fa-solid fa-greater-than"></i>
                     <div className="product-link">{product.name}</div>
                 </div>
@@ -94,13 +94,18 @@ const ProductPage = () => {
                             </div>
                             <AddToCart product={product} quantity={quantity}/>
                         </div>
-                        <button onClick={() => history.push(`/store/products/${productId}/edit`)}>Edit</button>
-                        <OpenModalButton
-                            buttonText="Delete"
-                            modalComponent={
-                                <DeleteModal productId={productId} />
-                            }
-                        ></OpenModalButton>
+                        {
+                            user.id === product.userId ?
+                            (<div className="manage-buttons">
+                                <button className='product-edit' onClick={() => history.push(`/store/products/${productId}/edit`)}>Edit</button>
+                                <OpenModalButton
+                                    buttonText="Delete"
+                                    modalComponent={
+                                        <DeleteModal productId={productId} />
+                                    }
+                                ></OpenModalButton>
+                            </div>) : null
+                        }
                     </div>
                 </div>
                 {product.category == 'game' ?

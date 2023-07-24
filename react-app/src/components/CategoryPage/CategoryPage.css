@@ -1,0 +1,19 @@
+#category-products-wrap {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.category-products {
+    display: flex;
+    width: 100%;
+    max-width: 80rem;
+    flex-direction: column;
+    padding-top: 3rem;
+}
+
+.category-products-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}

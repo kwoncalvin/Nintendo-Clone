@@ -1,15 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
 
+import { getCurrentCartItems } from "../../store/cart_items";
+
 const Navigation = ({ isLoaded }) => {
 	const history = useHistory();
+	const dispatch = useDispatch();
 	const sessionUser = useSelector(state => state.session.user);
+	const cartItems = useSelector((state) => state.cartItems.currentItems)
 	const location = useLocation();
 	const simpleNav = location.pathname === '/login' || location.pathname === '/signup';
 	const clearNav = location.pathname === '/';
+
+	const [cartQty, setCartQty] = useState(0);
+
+	useEffect(() => {
+		dispatch(getCurrentCartItems());
+    }, [dispatch])
+
+
+	useEffect(() => {
+		let qty = Object.values(cartItems).reduce((a, b) => a + b.quantity, 0);
+		setCartQty(qty)
+	}, [cartItems, dispatch])
+
 
 	return (
 		<div id={clearNav ? 'nav-bar-wrapper-clear' : 'nav-bar-wrapper'}>
@@ -23,7 +40,16 @@ const Navigation = ({ isLoaded }) => {
 					<div id='nav-bar-top-right'>
 						{/* <div>Support</div>
 						<div>Wish List</div> */}
-						<button onClick={() => history.push('/cart')}>Cart</button>
+						<div id='cart-button' onClick={() => history.push('/cart')}>
+							<div id='cart-icon'>
+								{sessionUser ?
+									<div id='cart-qty'>{cartQty}</div> :
+									null
+								}
+								<i class="fa-solid fa-cart-shopping"></i>
+							</div>
+							<div>Cart</div>
+						</div>
 						<div>
 							{isLoaded && <ProfileButton user={sessionUser}/>}
 						</div>
@@ -35,9 +61,9 @@ const Navigation = ({ isLoaded }) => {
 				<div id='nav-bar-bottom'>
 
 					<div onClick={() => history.push('/store')}>My Twintendo Store</div>
-					<div>Games</div>
-					<div>Hardware</div>
-					<div>Merchandise</div>
+					<div onClick={() => history.push('/store/games')}>Games</div>
+					<div onClick={() => history.push('/store/hardware')}>Hardware</div>
+					<div onClick={() => history.push('/store/merchandise')}>Merchandise</div>
 					<div onClick={() => history.push('/current/products')}>Manage Products</div>
 					{/* <div>Twintendo Switch</div>
 					<div>News & Events</div>
@@ -46,16 +72,6 @@ const Navigation = ({ isLoaded }) => {
 				</div>
 			}
 		</div>
-		// <ul>
-		// 	<li>
-		// 		<NavLink exact to="/">Home</NavLink>
-		// 	</li>
-		// 	{isLoaded && (
-		// 		<li>
-		// 			<ProfileButton user={sessionUser} />
-		// 		</li>
-		// 	)}
-		// </ul>
 	);
 }
 

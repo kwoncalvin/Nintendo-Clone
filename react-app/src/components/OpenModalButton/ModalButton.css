@@ -1,0 +1,10 @@
+.modal-button {
+    border: none;
+    background-color: rgb(230, 0, 18);
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    height: 3rem;
+    border-radius: 8px;
+    width: 100%;
+}

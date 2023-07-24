@@ -66,12 +66,12 @@ function ProfileButton({ user }) {
   return (
     <>
       {user ? (
-        <button onClick={openMenu}>
-          <i className="fas fa-user-circle" />
+        <button className='profile-button' onClick={openMenu}>
+          <img src={user.imageUrl ? user.imageUrl : 'https://icon-library.com/images/default-profile-icon/default-profile-icon-6.jpg'}/>
+          {user.nickname}
         </button>
       ) : (
-        <button onClick={openMenu}>
-          <i className="fas fa-user-circle" />
+        <button className='profile-button' onClick={openMenu}>
           Log in / Sign up
         </button>
       )}

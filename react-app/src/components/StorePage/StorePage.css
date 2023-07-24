@@ -48,11 +48,14 @@
     width: 100%;
     max-width: 90rem;
     margin-top: 3rem;
+    align-items: center;
 }
 
 #my-store {
     display: flex;
     justify-content: space-between;
+    max-width: 83rem;
+    width: 100%;
 }
 
 #my-twintendo-store {
@@ -74,13 +77,6 @@
     text-align: center;
 }
 
-#random-product {
-    border: 1px solid black;
-    display: flex;
-    width: 59rem;
-    height: 35rem;
-    box-shadow: rgba(0, 0, 0, 0.7) 0px 4px 16px 0px;
-}
 
 #categories {
     display: flex;
@@ -156,4 +152,61 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+}
+
+#random-product {
+    display: flex;
+    flex-direction: column;
+    width: 49.8rem;
+    height: 35rem;
+    box-shadow: rgba(0, 0, 0, 0.7) 0px 4px 16px 0px;
+    background-color: white;
+    border-radius: 8px;
+}
+
+
+
+#random-img {
+    display: flex;
+    justify-content: center;
+}
+
+#random-img > img{
+    height: 28rem;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+#random-desc {
+    display: flex;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    height: 100%;
+}
+
+#random-desc > h3 {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    width: 20rem;
+}
+
+#random-desc > button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0rem 2rem;
+    width: 10rem;
+    border: none;
+    background-color: rgb(230, 0, 18);
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    height: 3rem;
+    border-radius: 8px;
+}
+
+#random-desc > img {
+    height: 4.5rem;
+    margin: 0 3rem;
 }
