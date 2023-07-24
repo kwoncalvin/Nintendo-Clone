@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
+import { useHistory } from "react-router-dom";
 import { getAllProducts } from "../../store/products";
 
 import ProductPreview from "../ProductPreview";
@@ -10,6 +10,7 @@ import './StorePage.css'
 
 const StorePage = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
     const products = useSelector((state) => state.products.allProducts)
 
     useEffect(() => {
@@ -52,15 +53,26 @@ const StorePage = () => {
                     </div>
                 </div>
             </div>
-            <h2>All Products</h2>
-            {Object.values(products).map((product) => {
-                return (
-                    <ProductPreview
-                        key={product.id}
-                        product={product}
-                    />
-                )
-            })}
+            <div id='all-products-wrap'>
+                <div id='all-products'>
+                    <div id='store-path'>
+                        <div className="path-link" onClick={() => history.push('/')}>Home</div>
+                        <i class="fa-solid fa-greater-than"></i>
+                        <div id='store-link'>My Twintendo Store</div>
+                    </div>
+                    <h1>All Products</h1>
+                    <div id='products-list'>
+                        {Object.values(products).map((product) => {
+                            return (
+                                <ProductPreview
+                                    key={product.id}
+                                    product={product}
+                                />
+                            )
+                        })}
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }

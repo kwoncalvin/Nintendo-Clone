@@ -16,13 +16,13 @@ const Navigation = ({ isLoaded }) => {
 			<div id='nav-bar-top'>
 				<div id='nav-bar-top-left'>
 					<img id='logo' src='/logo.png' onClick={() => history.push('/')}/>
-					{simpleNav ? null : <div>Search Bar</div>}
+					{/* {simpleNav ? null : <div>Search Bar</div>} */}
 				</div>
 				{simpleNav? <div id='nav-middle'>Twintendo Account</div> : null}
 				{simpleNav ? <div></div> :
 					<div id='nav-bar-top-right'>
-						<div>Support</div>
-						<div>Wish List</div>
+						{/* <div>Support</div>
+						<div>Wish List</div> */}
 						<button onClick={() => history.push('/cart')}>Cart</button>
 						<div>
 							{isLoaded && <ProfileButton user={sessionUser}/>}
@@ -34,11 +34,14 @@ const Navigation = ({ isLoaded }) => {
 			{simpleNav ? null :
 				<div id='nav-bar-bottom'>
 
-					<button onClick={() => history.push('/store')}>My Twintendo Store</button>
+					<div onClick={() => history.push('/store')}>My Twintendo Store</div>
 					<div>Games</div>
-					<div>Twintendo Switch</div>
+					<div>Hardware</div>
+					<div>Merchandise</div>
+					<div onClick={() => history.push('/current/products')}>Manage Products</div>
+					{/* <div>Twintendo Switch</div>
 					<div>News & Events</div>
-					<div>Play Twintendo</div>
+					<div>Play Twintendo</div> */}
 
 				</div>
 			}

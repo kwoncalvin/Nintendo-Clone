@@ -12,9 +12,11 @@
     flex-direction: column;
     width: 100%;
     max-width: 71.5rem;
-    border: 1px solid black;
     margin-top: 4rem;
-    padding: 2rem 3rem 5rem 3rem;
+    padding: 2rem 3rem 4rem 3rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 4px 16px 0px;
 }
 
 .product-content {
@@ -32,6 +34,7 @@
 .product-img > img {
     max-width: 41rem;
     max-height: 25rem;
+    border-radius: 8px;
 }
 
 .product-bottom-section {
@@ -46,6 +49,10 @@
     display: flex;
     flex-direction: column;
     width: 35rem;
+}
+
+.product-description > h3 {
+    font-size: 25px;
 }
 
 .product-desc-img {
@@ -144,4 +151,93 @@
 #modal-qty-price > div {
     font-size: 14px;
     color: rgb(109, 109, 109);
+}
+
+.product-path {
+    display: flex;
+    gap: 0.5rem;
+    font-size: 12px;
+    align-items: center;
+}
+
+.product-path > i {
+    color: rgb(190, 190, 190);
+}
+
+.path-link {
+    color: rgb(97, 97, 97);
+    cursor: pointer;
+}
+
+.product-link {
+    color: black;
+}
+
+.product-color {
+    display: flex;
+    position: absolute;
+    height: 35rem;
+    width: 100%;
+    z-index: -1;
+    background-color: rgb(233, 233, 233);
+}
+
+.product-info {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.add-to-cart-section {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin: 2rem 0;
+}
+
+.quantity-adjuster {
+    height: 3.5rem;
+    border: 1px solid rgb(209, 209, 209);
+    border-radius: 8px;
+    display: flex;
+    width: 8rem;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 18px;
+}
+
+.quantity-adjuster > button {
+    border: none;
+    font-size: 15px;
+    width: 33%;
+    height: 100%;
+}
+
+.add-to-cart-button {
+    width: 18rem;
+    background-color: rgb(230, 0, 18);
+    color: white;
+    font-size: 20px;
+    gap: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    border: none;
+}
+
+.add-to-cart-button * {
+    color: white;
+}
+
+.category-line {
+    border-left: 3px solid;
+    padding-left: .3rem;
+    color:rgb(109, 109, 109);
+    font-size: 14px;
+}
+
+.esrb {
+    width: 3rem;
+    margin-top: 1.5rem;
 }

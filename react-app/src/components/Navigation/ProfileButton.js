@@ -38,12 +38,14 @@ function ProfileButton({ user }) {
   const login = (e) => {
     e.preventDefault();
     closeMenu();
+    body.style.overflow = 'auto'
     history.push("/login");
   };
 
   const signup = (e) => {
     e.preventDefault();
     closeMenu();
+    body.style.overflow = 'auto'
     history.push("/signup");
   };
 
@@ -99,7 +101,7 @@ function ProfileButton({ user }) {
                     <button id='manage-products' onClick={manage}>Manage Products</button>
                   </div>
                   <div id='yes-user-space'></div>
-                  <div className="user-info-links">
+                  {/* <div className="user-info-links">
                     <button>Wish List</button>
                     <button>Order history</button>
                     <button>Address book</button>
@@ -108,7 +110,7 @@ function ProfileButton({ user }) {
                     <button>My Twintendo</button>
                     <button>Redeem code</button>
                     <button>Account settings</button>
-                  </div>
+                  </div> */}
                   <button id='signout-button' onClick={signout}>
                     Sign Out
                     <i class="fa-solid fa-arrow-right-from-bracket"></i>
@@ -128,19 +130,19 @@ function ProfileButton({ user }) {
                     <img src='https://assets.nintendo.com/image/upload/f_auto/q_auto/dpr_1.0/c_scale,w_300/Dev/Global%20Navigation/unauthd-asset.png'/>
                     <div>With a free account, you can</div>
                     <div><i class="fa-solid fa-check"></i>Shop online</div>
-                    <div><i class="fa-solid fa-check"></i>Post products</div>
-                    <div><i class="fa-solid fa-check"></i>Save a Wish List</div>
+                    <div><i class="fa-solid fa-check"></i>View products</div>
+                    <div><i class="fa-solid fa-check"></i>Manage products</div>
                   </div>
                   <button id='login-button' onClick={login}>Log in</button>
                   <button id='signup-button' onClick={signup}>Sign up</button>
-                  <div className="user-info-links">
+                  {/* <div className="user-info-links">
                     <button>Order Status</button>
                   </div>
                   <div className="user-info-links">
                     <button>My Twintendo</button>
                     <button>Redeem code</button>
                     <button>Account settings</button>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </>

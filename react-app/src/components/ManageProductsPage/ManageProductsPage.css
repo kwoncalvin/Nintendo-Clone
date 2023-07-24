@@ -1,0 +1,39 @@
+#current-products-wrap {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.current-products {
+    display: flex;
+    width: 100%;
+    max-width: 80rem;
+    flex-direction: column;
+    padding-top: 3rem;
+}
+
+.current-products-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#new-product {
+    height: 5rem;
+    width: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    margin: 3rem;
+    background-color: #00FF00;
+    font-size: 40px;
+    border-radius: 100%;
+    border: 1px solid gray;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 4px 16px 0px;
+}
+
+#new-product > i {
+    color: white;
+}

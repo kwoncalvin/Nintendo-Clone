@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams, useHistory } from "react-router-dom";
+import {useHistory } from "react-router-dom";
 
-import CartItem from "./cartItem";
+import CartItem from "./CartItem";
 
 import { getCurrentCartItems } from "../../store/cart_items";
 
@@ -23,12 +23,12 @@ const CartPage = () => {
         <div id='cart-page-wrapper' className="dodge-nav">
             <div id='cart-page-body'>
                 <h2>Shopping cart</h2>
-                <div>
-                    <div>Home</div>
-                    <div>{'>'}</div>
-                    <div>My Nintendo Store</div>
-                    <div>{'>'}</div>
-                    <div>Shopping cart</div>
+                <div className="cart-path">
+                    <div className="path-link" onClick={() => history.push('/')}>Home</div>
+                    <i class="fa-solid fa-greater-than"></i>
+                    <div className="path-link" onClick={() => history.push('/store')}>My Nintendo Store</div>
+                    <i class="fa-solid fa-greater-than"></i>
+                    <div className="cart-link">Shopping cart</div>
                 </div>
                 <div className="cart-content">
                     <div className="cart-items-list">

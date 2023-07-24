@@ -35,7 +35,7 @@ class Product(db.Model):
             'description': self.description,
             'releaseDate': self.release_date,
             'imageUrl': self.image_url,
-            'desc_image_url': self.desc_image_url,
+            'descImageUrl': self.desc_image_url,
             'category': self.category,
             'esrb': self.esrb,
             'color': self.color

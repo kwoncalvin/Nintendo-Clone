@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, useHistory } from "react-router-dom";
 import { signUp, login } from "../../store/session";
@@ -13,7 +13,17 @@ const SignupFormPage = () => {
   const [nickname, setNickname] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [disabled, setDisabled] = useState(true)
   const [errors, setErrors] = useState([]);
+
+
+  useEffect(() => {
+    if (nickname.length > 20 || username.length > 20 || password.length < 6 || confirmPassword.length < 6 || !email || !nickname || !username) {
+        setDisabled(true);
+    } else {
+        setDisabled(false);
+    }
+  }, [username, password, email, nickname, confirmPassword]);
 
   if (sessionUser) return <Redirect to="/" />;
 
@@ -67,7 +77,7 @@ const SignupFormPage = () => {
         <form id='signup-form' onSubmit={handleSubmit}>
           <p>If you would like to create a Twintendo Account, please enter your information below.</p>
           <ul>
-            {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+            {errors.map((error, idx) => <li className='signup-err' key={idx}>{error}</li>)}
           </ul>
           <label className="signup-input">
             <div>Nickname</div>
@@ -119,7 +129,13 @@ const SignupFormPage = () => {
               required
             />
           </label>
-          <button className='signup-submit' type="submit">Submit</button>
+          <button
+            className={disabled? 'disabled-signup' : 'signup-submit'}
+            type="submit"
+            disabled={disabled}
+          >
+            Submit
+          </button>
         </form>
       </div>
     </div>

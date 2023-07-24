@@ -103,6 +103,10 @@
   border-bottom: 1px grey solid;
 }
 
+#nav-bar-bottom > div {
+  cursor: pointer;
+}
+
 .grey-back {
   position: fixed;
   top: 0;
@@ -212,7 +216,6 @@
   cursor: pointer;
   height: 3rem;
   border-radius: 8px;
-  margin-top: 1.5rem;
   font-size: 18px;
 }
 

@@ -45,14 +45,39 @@
     width: 10rem;
     justify-content: center;
     align-items: center;
+    border: 1px solid rgb(211, 211, 211);
+    border-radius: 8px;
 }
 
 .cart-item-img > img {
     max-width: 10rem;
     max-height: 5.6rem;
+    border-radius: 8px;
 }
 
 .space-between {
     display: flex;
     justify-content: space-between;
+}
+
+
+.cart-path {
+    display: flex;
+    gap: 0.5rem;
+    font-size: 12px;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.cart-path > i {
+    color: rgb(190, 190, 190);
+}
+
+.path-link {
+    color: rgb(97, 97, 97);
+    cursor: pointer;
+}
+
+.cart-link {
+    color: black;
 }
