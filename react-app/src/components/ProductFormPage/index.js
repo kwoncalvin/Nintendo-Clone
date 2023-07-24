@@ -74,7 +74,6 @@ const ProductFormPage = () => {
 
         if (errs) {
             setErrors({...errs})
-            return;
         }
         let product = await dispatch((isCreate? postProduct(payload) : putProduct(payload, productId)))
             .catch(async (res) => {
