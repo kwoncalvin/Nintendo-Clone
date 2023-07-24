@@ -1,20 +1,16 @@
 """empty message
 
-Revision ID: e58b891de5f0
-Revises:
-Create Date: 2023-07-12 13:37:12.301654
+Revision ID: de6b53d3607c
+Revises: 
+Create Date: 2023-07-23 17:50:46.579000
 
 """
 from alembic import op
 import sqlalchemy as sa
 
-import os
-environment = os.getenv("FLASK_ENV")
-SCHEMA = os.environ.get("SCHEMA")
-
 
 # revision identifiers, used by Alembic.
-revision = 'e58b891de5f0'
+revision = 'de6b53d3607c'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -35,11 +31,16 @@ def upgrade():
     op.create_table('products',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=True),
-    sa.Column('name', sa.String(length=40), nullable=False),
+    sa.Column('name', sa.String(length=255), nullable=False),
+    sa.Column('price', sa.Numeric(precision=5, scale=2), nullable=True),
     sa.Column('description_header', sa.String(length=255), nullable=False),
     sa.Column('description', sa.Text(), nullable=False),
     sa.Column('release_date', sa.Date(), nullable=True),
     sa.Column('image_url', sa.String(length=255), nullable=True),
+    sa.Column('desc_image_url', sa.String(length=255), nullable=True),
+    sa.Column('category', sa.String(length=20), nullable=True),
+    sa.Column('esrb', sa.String(length=20), nullable=True),
+    sa.Column('color', sa.String(length=10), nullable=True),
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('name')
@@ -53,9 +54,6 @@ def upgrade():
     sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
-
-    if environment == "production":
-        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
     # ### end Alembic commands ###
 
 

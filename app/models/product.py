@@ -11,7 +11,7 @@ class Product(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")))
     name = db.Column(db.String(255), nullable=False, unique=True)
-    price = db.Column(db.Numeric(5, 2))
+    price = db.Column(db.Numeric(5, 2), nullable=False)
     description_header = db.Column(db.String(255), nullable=False)
     description = db.Column(db.Text, nullable=False)
     release_date = db.Column(db.Date)
