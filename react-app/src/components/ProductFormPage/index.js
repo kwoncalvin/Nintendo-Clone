@@ -72,7 +72,10 @@ const ProductFormPage = () => {
             'color': color
         }
 
-        if (errs) setErrors({...errs})
+        if (errs) {
+            setErrors({...errs})
+            return;
+        }
         let product = await dispatch((isCreate? postProduct(payload) : putProduct(payload, productId)))
             .catch(async (res) => {
                 const data = await res.json();
