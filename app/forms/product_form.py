@@ -5,7 +5,7 @@ from app.models import Product
 
 class ProductForm(FlaskForm):
     name = StringField('Name', validators=[DataRequired(), Length(max=255)])
-    price = DecimalField('Price', validators=[DataRequired()])
+    price = DecimalField('Price')
     description_header = StringField('Description Header', validators=[DataRequired(), Length(max=255)])
     description = TextAreaField('Description', validators=[DataRequired()])
     release_date = DateField('Release Date', format='%Y-%m-%d', validators=[DataRequired()])
