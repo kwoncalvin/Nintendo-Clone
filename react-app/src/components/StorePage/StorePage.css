@@ -99,7 +99,16 @@
     font-size: 20px;
     gap: 1rem;
     border-radius: 8px;
-    box-shadow: rgba(0, 0, 0, 0.7) 0px 4px 16px 0px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 4px 16px 0px;
+    cursor: pointer;
+}
+
+.category-button:hover {
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 4px 16px 0px;
+}
+
+.category-button:hover > div {
+    color: red;
 }
 
 .category-button > img {
