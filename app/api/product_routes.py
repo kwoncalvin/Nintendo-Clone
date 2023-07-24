@@ -46,6 +46,16 @@ def create_product():
         # image = form.data["image_url"]
         # image.filename = get_unique_filename(image.filename)
         # upload = upload_file_to_s3(image)
+        print(form.name.data)
+        print(form.price.data)
+        print(form.description_header.data)
+        print(form.description.data)
+        print(form.release_date.data)
+        print(form.image_url.data)
+        print(form.desc_image_url.data)
+        print(form.category.data)
+        print(form.esrb.data)
+        print(form.color.data)
         new_product = Product(
             user_id = current_user.id,
             name = form.name.data,

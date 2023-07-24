@@ -30,9 +30,9 @@ const ProductFormPage = () => {
     const [releaseDate, setReleaseDate] = useState(product ? date : "");
     const [imageUrl, setImageUrl] = useState(product ? product.imageUrl : "");
     const [descImageUrl, setDescImageUrl] = useState(product ? product.descImageUrl : "");
-    const [category, setCategory] = useState("");
-    const [esrb, setEsrb] = useState("");
-    const [color, setColor] = useState("");
+    const [category, setCategory] = useState(product ? product.category : "");
+    const [esrb, setEsrb] = useState(product ? product.esrb : "");
+    const [color, setColor] = useState(product ? product.color : "");
     const [errors, setErrors] = useState({});
 
     const handleSubmit = async (e) => {
@@ -42,20 +42,20 @@ const ProductFormPage = () => {
         if (!name) errs.name = "Name is required";
         else if (name.length > 255) errs.name = "Name must be less than 255 characters long";
         if (!price) errs.price = "Price is required";
-        else if (isNaN(price) || Number(price) < 0 || Number(price) > 99.99) {
+        else if (isNaN(price) || Number(price) < 0 || Number(price) > 999.99) {
             errs.price = "Price must be a numeric value between 0.00 and 999.99"
         }
         if (!descriptionHeader) errs.descriptionHeader = "Description header is required";
         else if (descriptionHeader.length > 255) errs.descriptionHeader = "Description header must be less than 255 characters long";
         if (!description) errs.description = "Description is required";
-        if (!releaseDate) errs.releaseDate = "Release date is required";
-        if (!(imageUrl.endsWith(".png") || imageUrl.endsWith(".jpg") || imageUrl.endsWith(".jpeg"))) {
+        if (category == 'game' && !releaseDate) errs.releaseDate = "Release date is required for games";
+        if (!imageUrl || !(imageUrl.endsWith(".png") || imageUrl.endsWith(".jpg") || imageUrl.endsWith(".jpeg"))) {
             errs.imageUrl = "Image URL must end in .png, .jpg, or .jpeg";
         }
-        if (!(descImageUrl.endsWith(".png") || descImageUrl.endsWith(".jpg") || descImageUrl.endsWith(".jpeg"))) {
+        if (!descImageUrl || !(descImageUrl.endsWith(".png") || descImageUrl.endsWith(".jpg") || descImageUrl.endsWith(".jpeg"))) {
             errs.descImageUrl = "Description image URL must end in .png, .jpg, or .jpeg";
         }
-        if (!category) errs.category = "Price is required";
+        if (!category) errs.category = "Category is required";
         if (category == 'game' && !esrb) errs.esrb = "ESRB rating is required for games.";
 
 
@@ -164,10 +164,11 @@ const ProductFormPage = () => {
                     <label className="product-input">
                         <div>Color</div>
                         <input
+                            type="color"
                             placeholder="Color"
                             value={color}
                             onChange={(e) => setColor(e.target.value)}
-                            defaultValue={isCreate ? '' : color}
+                            defaultValue={isCreate ? '#e9e9e9' : color}
                         />
                     </label>
                     {errors.color && (
@@ -206,12 +207,15 @@ const ProductFormPage = () => {
                             )}
                             <label className="product-input">
                                 <div>ESRB Rating</div>
-                                <input
-                                    placeholder="ESRB"
-                                    value={esrb}
+                                <select
                                     onChange={(e) => setEsrb(e.target.value)}
                                     defaultValue={isCreate ? '' : esrb}
-                                />
+                                >
+                                    <option value="" hidden>(select one)</option>
+                                    <option value="everyone">Everyone</option>
+                                    <option value="everyone 10+">Everyone 10+</option>
+                                    <option value="teen">Teen</option>
+                                </select>
                             </label>
                             {errors.esrb && (
                                     <p className="error">{errors.esrb}</p>

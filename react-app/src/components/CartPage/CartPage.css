@@ -110,6 +110,7 @@
     font-size: 15px;
     border-bottom: 2px solid red;
     padding: 0;
+    cursor: pointer;
 }
 
 .cart-item-first-half {
