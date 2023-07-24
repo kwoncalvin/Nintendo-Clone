@@ -49,11 +49,16 @@ def create_product():
         new_product = Product(
             user_id = current_user.id,
             name = form.name.data,
+            price = form.price.data,
             description_header = form.description_header.data,
             description = form.description.data,
             release_date = form.release_date.data,
             # imageUrl =  upload['url'],
-            image_url = form.image_url.data
+            image_url = form.image_url.data,
+            desc_image_url = form.desc_image_url.data,
+            category = form.category.data,
+            esrb = form.esrb.data,
+            color = form.color.data
         )
         db.session.add(new_product)
         db.session.commit()
@@ -78,10 +83,15 @@ def update_product(productId):
 
     if form.validate_on_submit():
         product.name = form.name.data
+        product.price = form.price.data
         product.description_header = form.description_header.data
         product.description = form.description.data
         product.release_date = form.release_date.data
         product.image_url = form.image_url.data
+        product.desc_image_url = form.desc_image_url.data
+        product.category = form.category.data
+        product.esrb = form.esrb.data
+        product.color = form.color.data
 
         db.session.commit()
         return {"updated_product": product.to_dict()}
