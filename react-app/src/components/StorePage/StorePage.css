@@ -148,10 +148,15 @@
     color: black;
 }
 
+#all-products-preview {
+    display: flex;
+    justify-content: center;
+    margin-left: 3rem;
+}
+
 #products-list {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
 }
 
 #random-product {

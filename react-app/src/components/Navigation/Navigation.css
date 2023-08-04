@@ -122,7 +122,21 @@
 }
 
 #nav-bar-bottom > div {
+  display: flex;
   cursor: pointer;
+  align-items: center;
+  gap: 0.3rem;
+}
+#nav-bar-bottom img {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 4px;
+}
+
+#nav-bar-bottom i {
+  color: #e60012;
+  font-size: 16px;
+  font-weight: bold;
 }
 
 .grey-back {

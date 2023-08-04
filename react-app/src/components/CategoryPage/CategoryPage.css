@@ -2,6 +2,14 @@
     display: flex;
     width: 100%;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.category-products-preview {
+    display: flex;
+    justify-content: center;
+    padding-left: 3rem;
 }
 
 .category-products {
@@ -14,6 +22,73 @@
 
 .category-products-list {
     display: flex;
-    justify-content: center;
     flex-wrap: wrap;
+}
+
+.category-path {
+    display: flex;
+    gap: 0.5rem;
+    font-size: 14px;
+    align-items: center;
+    flex-direction: row;
+}
+
+.category-path > i {
+    color: rgb(190, 190, 190);
+}
+
+.path-link {
+    color: rgb(97, 97, 97);
+    cursor: pointer;
+}
+
+.category-link {
+    color: black;
+}
+
+.category-banner {
+    background-repeat: repeat;
+    width: 100%;
+    display: flex;
+    height: 22rem;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.category-banner img {
+    height: 22rem;
+}
+
+.category-desc {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 42rem;
+    padding: 2rem;
+    gap: 1rem;
+    height: fit-content;
+    justify-content: center;
+    border-radius: 8px;
+}
+
+.category-desc i {
+    color: white;
+    font-size: 45px;
+}
+
+.category-desc h1 {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    color: white;
+    margin: 0;
+    align-items: center;
+    font-size: 38px;
+}
+
+.category-desc h4 {
+    color: white;
+    font-weight: normal;
+    line-height: 1.5rem;
 }
