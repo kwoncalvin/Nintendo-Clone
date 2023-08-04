@@ -201,3 +201,7 @@
     margin-top: .7rem;
     width: 12rem;
 }
+
+.promo > h4 {
+    color: red;
+}
