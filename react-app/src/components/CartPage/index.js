@@ -15,6 +15,7 @@ const CartPage = () => {
     const history = useHistory();
 
     const cartItems = useSelector((state) => state.cartItems.currentItems)
+    const [promo, setPromo] = useState("");
 
     let price = 0;
     for (let cartItem of Object.values(cartItems)) {
@@ -65,12 +66,18 @@ const CartPage = () => {
                         <h3 className="bottom-border">Order summary</h3>
                         <div className="space-between order-section bottom-border">
                             <h4>Promotional code</h4>
-                            <input></input>
+                            <input onChange={(e) => setPromo(e.target.value)}></input>
                         </div>
                         <div className="space-between order-section">
                             <h4>Item(s) subtotal</h4>
                             <h4>${price.toFixed(2)}</h4>
                         </div>
+                        {promo == 'AppAcademy'?
+                            (<div className="space-between order-section promo">
+                                <h4>99% Off!</h4>
+                                <h4>- ${(price * .99).toFixed(2)}</h4>
+                            </div>) : null
+                        }
                         <div className="space-between order-section bottom-border">
                             <h4>Shipping</h4>
                             <h4>Free</h4>
@@ -81,7 +88,7 @@ const CartPage = () => {
                         </div>
                         <div className="space-between order-section">
                             <h3>Estimated total</h3>
-                            <h3>${price.toFixed(2)}</h3>
+                            <h3>${promo == 'AppAcademy'? (price * .01).toFixed(2) : price.toFixed(2)}</h3>
                         </div>
                         {Object.values(cartItems).length ?
                             (<OpenModalButton
