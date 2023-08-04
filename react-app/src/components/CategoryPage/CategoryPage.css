@@ -23,6 +23,7 @@
 .category-products-list {
     display: flex;
     flex-wrap: wrap;
+    margin-bottom: 7rem;
 }
 
 .category-path {
