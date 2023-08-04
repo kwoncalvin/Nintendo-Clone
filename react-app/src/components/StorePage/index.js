@@ -86,15 +86,17 @@ const StorePage = () => {
                         <div id='store-link'>My Twintendo Store</div>
                     </div>
                     <h1>All Products</h1>
-                    <div id='products-list'>
-                        {Object.values(products).map((product) => {
-                            return (
-                                <ProductPreview
-                                    key={product.id}
-                                    product={product}
-                                />
-                            )
-                        })}
+                    <div id='all-products-preview'>
+                        <div id='products-list'>
+                            {Object.values(products).map((product) => {
+                                return (
+                                    <ProductPreview
+                                        key={product.id}
+                                        product={product}
+                                    />
+                                )
+                            })}
+                        </div>
                     </div>
                 </div>
             </div>

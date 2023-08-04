@@ -21,19 +21,26 @@ const ManageProductsPage = () => {
     return (
         <div className="dodge-nav" id="current-products-wrap">
             <div className="current-products">
-                <h1>Your Products</h1>
-                <div className="current-products-list">
-                    {Object.values(products).map((product) => {
-                        return (
-                            <ProductPreview
-                                key={product.id}
-                                product={product}
-                            />
-                        )
-                    })}
-                    <button id='new-product' onClick={() => history.push('/store/products/new')}>
-                        <i class="fa-solid fa-plus"></i>
-                    </button>
+                <div className='your-path'>
+                    <div className="path-link" onClick={() => history.push('/store')}>Store</div>
+                    <i class="fa-solid fa-greater-than"></i>
+                    <div className='your-link'>My Products</div>
+                </div>
+                <h1>My Products</h1>
+                <div className="current-products-preview">
+                    <div className="current-products-list">
+                        {Object.values(products).map((product) => {
+                            return (
+                                <ProductPreview
+                                    key={product.id}
+                                    product={product}
+                                />
+                            )
+                        })}
+                        <button id='new-product' onClick={() => history.push('/store/products/new')}>
+                            <i class="fa-solid fa-plus"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

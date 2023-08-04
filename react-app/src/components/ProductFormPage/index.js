@@ -72,18 +72,21 @@ const ProductFormPage = () => {
             'color': color
         }
 
-        if (errs) {
+        if (Object.keys(errs).length) {
+            console.log(errs)
             setErrors({...errs})
-        }
-        let product = await dispatch((isCreate? postProduct(payload) : putProduct(payload, productId)))
-            .catch(async (res) => {
-                const data = await res.json();
-                if (data && data.errors) {
-                    setErrors({...data.errors, ...errs})
-                }
-            });
-        if (product) {
-            history.push(`/store/products/${product.id}`)
+        } else {
+            console.log('hello')
+            let product = await dispatch((isCreate? postProduct(payload) : putProduct(payload, productId)))
+                .catch(async (res) => {
+                    const data = await res.json();
+                    if (data && data.errors) {
+                        setErrors({...data.errors, ...errs})
+                    }
+                });
+            if (product) {
+                history.push(`/store/products/${product.id}`)
+            }
         }
     }
     return (

@@ -10,8 +10,19 @@
     box-shadow: rgba(0, 0, 0, 0.3) 0px 4px 16px 0px;
 }
 
+.product-preview-wrapper img {
+    border-top: 1px solid rgb(202, 202, 202);
+    /* border-left: 1px solid rgb(202, 202, 202);
+    border-right: 1px solid rgb(202, 202, 202); */
+    transition: transform .3s ease-in-out;
+}
+
 .product-preview-wrapper:hover {
     box-shadow: rgba(0, 0, 0, 0.5) 0px 4px 16px 0px;
+}
+
+.product-preview-wrapper:hover img{
+    transform: translate(0, -1rem);
 }
 
 .product-preview-wrapper img {
