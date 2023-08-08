@@ -58,3 +58,16 @@
     font-size: 14px;
     margin: 0.5rem 0;
 }
+
+.category-fav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.category-fav > i {
+    font-size: 25px;
+    -webkit-text-stroke: 1px red;
+    color: rgb(230, 0, 18);
+    cursor: pointer;
+}

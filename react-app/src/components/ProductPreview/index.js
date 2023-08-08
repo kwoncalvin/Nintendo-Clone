@@ -1,9 +1,13 @@
-import { useHistory } from "react-router-dom"
+import { useHistory} from "react-router-dom"
+import { useDispatch, useSelector } from "react-redux";
 
 import './ProductPreview.css'
+import { postFavorite } from "../../store/favorites";
 
 const ProductPreview = ({product}) => {
     const history = useHistory();
+    const dispatch = useDispatch();
+    const user = useSelector((state) => state.session.user)
     let date;
     if (product.releaseDate) {
         date = new Date(product.releaseDate)
@@ -30,6 +34,19 @@ const ProductPreview = ({product}) => {
 
     const thisDict = categoryDict[product.category]
 
+    const handleFavorite = e => {
+        e.stopPropagation();
+
+        if (!user) {
+            history.push('/login')
+        }
+        let payload = {
+            'product_id': product.id
+        }
+
+        dispatch(postFavorite(payload))
+    }
+
 
     return (
         <div
@@ -44,7 +61,10 @@ const ProductPreview = ({product}) => {
                 </div>
                 <div>
                     <h4>${product.price}</h4>
-                    <div className="category-line" style={{'border-left': thisDict.border}}>{thisDict.category}</div>
+                    <div className="category-fav">
+                        <div className="category-line" style={{'border-left': thisDict.border}}>{thisDict.category}</div>
+                        <i class="fa-regular fa-heart" onClick={handleFavorite}></i>
+                    </div>
                 </div>
             </div>
         </div>
