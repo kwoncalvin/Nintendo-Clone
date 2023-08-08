@@ -1,18 +1,22 @@
+import React, { useEffect } from "react";
 import { useHistory} from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux";
 
 import './ProductPreview.css'
-import { postFavorite } from "../../store/favorites";
+import { deleteFavorite, postFavorite } from "../../store/favorites";
 
 const ProductPreview = ({product}) => {
     const history = useHistory();
     const dispatch = useDispatch();
     const user = useSelector((state) => state.session.user)
+    const favorites = useSelector((state) => state.favorites.currentFavorites)
     let date;
     if (product.releaseDate) {
         date = new Date(product.releaseDate)
         date = date.toLocaleDateString("en-US");
     }
+
+    let favorite = Object.values(favorites).filter((favorite) => favorite.user_id == user.id && favorite.product_id == product.id);
 
     const categoryDict = {
         'game': {
@@ -47,6 +51,16 @@ const ProductPreview = ({product}) => {
         dispatch(postFavorite(payload))
     }
 
+    const removeFavorite = e => {
+        e.stopPropagation();
+
+        if (!user) {
+            history.push('/login')
+        }
+
+        dispatch(deleteFavorite(favorite[0].id));
+    }
+
 
     return (
         <div
@@ -63,7 +77,10 @@ const ProductPreview = ({product}) => {
                     <h4>${product.price}</h4>
                     <div className="category-fav">
                         <div className="category-line" style={{'border-left': thisDict.border}}>{thisDict.category}</div>
-                        <i class="fa-regular fa-heart" onClick={handleFavorite}></i>
+                        {favorite.length > 0 ?
+                            <i class="fa-solid fa-heart" onClick={removeFavorite}></i> :
+                            <i class="fa-regular fa-heart" onClick={handleFavorite}></i>
+                        }
                     </div>
                 </div>
             </div>

@@ -44,6 +44,10 @@
                 white 0px 0px 10px;
 }
 
+#nav-bar-wrapper-clear #nav-bar-bottom > div:hover {
+  color: #e60012;
+}
+
 #nav-bar-wrapper-clear #nav-bar-top-left > div {
   color: black;
   text-shadow:  white 0px 0px 10px,
@@ -70,6 +74,10 @@
                 white 0px 0px 10px;
 }
 
+#nav-bar-wrapper-clear .profile-button:hover {
+  color: #e60012;
+}
+
 #nav-bar-wrapper-clear #cart-button > div {
   color: black;
 
@@ -77,6 +85,10 @@
                 white 0px 0px 10px,
                 white 0px 0px 10px,
                 white 0px 0px 10px
+}
+
+#nav-bar-wrapper-clear #cart-button:hover > div {
+  color: #e60012;
 }
 
 #nav-bar-top {
@@ -127,6 +139,11 @@
   align-items: center;
   gap: 0.3rem;
 }
+
+#nav-bar-bottom > div:hover {
+  color: #e60012;
+}
+
 #nav-bar-bottom img {
   width: 1rem;
   height: 1rem;
@@ -284,6 +301,16 @@
   cursor: pointer;
 }
 
+#cart-button:hover > div {
+  color: #e60012;
+}
+
+#cart-button:hover i {
+  color: #e60012;
+}
+
+
+
 #cart-icon {
   display: flex;
   font-size: 18px;
@@ -320,7 +347,30 @@
   cursor: pointer;
 }
 
+.profile-button:hover {
+  color: #e60012;
+}
+
 .profile-button > img {
   width: 1.5rem;
   border-radius: 100%;
+}
+
+#wishlist-button {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+}
+
+#wishlist-button:hover > div {
+  color: #e60012;
+}
+
+#wishlist-button:hover > i {
+  color: #e60012;
+}
+
+#wishlist-button > i {
+  font-size: 18px;
 }

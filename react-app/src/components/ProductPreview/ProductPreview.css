@@ -71,3 +71,8 @@
     color: rgb(230, 0, 18);
     cursor: pointer;
 }
+
+.category-fav > i:hover {
+    -webkit-text-stroke: 1px rgb(184, 0, 15);
+    color: rgb(184, 0, 15);
+}

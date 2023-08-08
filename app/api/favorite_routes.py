@@ -14,6 +14,17 @@ def get_current_favorites():
     favorites = Favorite.query.filter(Favorite.user_id == current_user.id).all()
     return {"favorites": {favorite.id: favorite.to_dict() for favorite in favorites}}
 
+@favorite_routes.route('/<int:productId>')
+def get_favorite(productId):
+    """
+    Query for a favorite by product id and returns whether that favorite exists.
+    """
+    favorite = Favorite.query.filter(Favorite.user_id == current_user.id and Favorite.productId == productId)
+    if favorite:
+        return True
+    else:
+        return False
+
 @favorite_routes.route('/add', methods=["POST"])
 @login_required
 def add_favorite():

@@ -52,8 +52,8 @@ export const getCurrentFavorites = () => async (dispatch) => {
     }
 }
 
-export const getFavorite = (id) => async () => {
-    await fetch(`/api/favorites/${id}`)
+export const getFavorite = (productId) => async () => {
+    return await fetch(`/api/favorites/${productId}`)
 }
 
 
