@@ -9,7 +9,7 @@ const Footer = () => {
                 <img src='/logothin.png'/>
                 <div>
                     <h3>Calvin Kwon</h3>
-                    <a href='https://github.com/kwoncalvin'>
+                    <a href='https://github.com/kwoncalvin' target="_blank">
                         <i class="fa-brands fa-github"></i>
                     </a>
                 </div>

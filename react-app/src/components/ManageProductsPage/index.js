@@ -30,6 +30,7 @@ const ManageProductsPage = () => {
                     <div className='your-link'>My Products</div>
                 </div>
                 <h1>My Products</h1>
+                {Object.values(products).length ? null : <h2>You currently have no products posted.</h2>}
                 <div className="current-products-preview">
                     <div className="current-products-list">
                         {Object.values(products).map((product) => {
