@@ -11,6 +11,7 @@ import ProductFormPage from "./components/ProductFormPage";
 import CartPage from "./components/CartPage";
 import Footer from "./components/Footer";
 import CategoryPage from "./components/CategoryPage";
+import WishListPage from "./components/WishListPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 
@@ -53,6 +54,9 @@ function App() {
             </Route>
             <Route exact path = '/current/products'>
               <ManageProductsPage/>
+            </Route>
+            <Route exact path = '/wishlist'>
+              <WishListPage/>
             </Route>
             <Route exact path = '/cart'>
               <CartPage/>

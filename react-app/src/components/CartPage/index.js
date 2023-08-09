@@ -5,6 +5,7 @@ import {useHistory } from "react-router-dom";
 import CartItem from "./CartItem";
 
 import { getCurrentCartItems, clearCart } from "../../store/cart_items";
+import { getCurrentFavorites } from "../../store/favorites";
 import OpenModalButton from "../OpenModalButton";
 import CheckoutModal from "../CheckoutModal";
 import './CartPage.css'
@@ -25,6 +26,7 @@ const CartPage = () => {
 
     useEffect(() => {
         dispatch(getCurrentCartItems());
+        dispatch(getCurrentFavorites());
     }, [dispatch])
 
     const handleClear = () => {
@@ -39,7 +41,7 @@ const CartPage = () => {
     return (
         <div id='cart-page-wrapper' className="dodge-nav">
             <div id='cart-page-body'>
-                <h2>Shopping cart</h2>
+                <h1>Shopping cart</h1>
                 <div className="cart-path">
                     <div className="path-link" onClick={() => history.push('/')}>Home</div>
                     <i class="fa-solid fa-greater-than"></i>
@@ -59,7 +61,7 @@ const CartPage = () => {
                         })}
                         {Object.values(cartItems).length ?
                             <button id='clear-cart-button' onClick={handleClear}>Clear Cart</button> :
-                            <h2>Your Cart is Empty</h2>
+                            <h2 style={{'margin': '2rem 0rem'}}>Your Cart is Empty</h2>
                         }
                     </div>
                     <div className="order-summary">

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 
 import { getAllProducts } from "../../store/products";
+import { getCurrentFavorites } from "../../store/favorites";
 
 import ProductPreview from "../ProductPreview";
 
@@ -39,6 +40,10 @@ const CategoryPage = () => {
     const thisDict = categoryDict[params.category]
     const category = thisDict.filter;
     const title = thisDict.title;
+
+    useEffect(() => {
+        dispatch(getCurrentFavorites());
+    }, [dispatch])
 
     const categoryProducts = Object.values(products).filter((product) => product.category === category);
 

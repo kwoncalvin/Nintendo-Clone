@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { getAllProducts } from "../../store/products";
+import { getCurrentFavorites } from "../../store/favorites";
 
 import ProductPreview from "../ProductPreview";
 
@@ -18,6 +19,7 @@ const StorePage = () => {
 
     useEffect(() => {
         dispatch(getAllProducts());
+        dispatch(getCurrentFavorites());
     }, [dispatch])
 
     const categoryDict = {

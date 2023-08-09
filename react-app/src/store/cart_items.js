@@ -52,9 +52,9 @@ export const getCurrentCartItems = () => async (dispatch) => {
     }
 }
 
-export const getCartItem = (id) => async () => {
-    const res = await fetch(`/api/cart-items/${id}`)
-}
+// export const getCartItem = (id) => async () => {
+//     const res = await fetch(`/api/cart-items/${id}`)
+// }
 
 export const putCartItem = (cartItem, id) => async (dispatch) => {
 	const res = await fetch(`/api/cart-items/${id}/update`, {

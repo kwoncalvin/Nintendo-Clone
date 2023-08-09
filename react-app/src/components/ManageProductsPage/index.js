@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import { getCurrentProducts } from "../../store/products";
+import { getCurrentFavorites } from "../../store/favorites";
 
 import ProductPreview from "../ProductPreview";
 
@@ -16,6 +17,8 @@ const ManageProductsPage = () => {
 
     useEffect(() => {
         dispatch(getCurrentProducts());
+        dispatch(getCurrentFavorites());
+
     }, [dispatch])
 
     return (

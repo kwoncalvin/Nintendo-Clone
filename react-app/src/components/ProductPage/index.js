@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, useHistory } from "react-router-dom";
 
 import { getProduct } from "../../store/products";
+import { getCurrentFavorites, deleteFavorite, postFavorite } from "../../store/favorites";
 import OpenModalButton from "../OpenModalButton"
 import DeleteModal from "../DeleteModal";
 import AddToCart from './AddToCart'
@@ -21,9 +22,11 @@ const ProductPage = () => {
     const user = useSelector((state) => state.session.user)
     const product = useSelector((state) => {
         if (productId == state.products.singleProduct.id)
-            return state.products.singleProduct;
+        return state.products.singleProduct;
         return {}
     })
+    const favorites = useSelector((state) => state.favorites.currentFavorites)
+    let favorite = Object.values(favorites).filter((favorite) => favorite.user_id == user.id && favorite.product_id == product.id);
 
     const categoryDict = {
         'game': {
@@ -58,6 +61,34 @@ const ProductPage = () => {
         dispatch(getProduct(productId));
     }, [dispatch, productId])
 
+    useEffect(() => {
+        dispatch(getCurrentFavorites());
+    }, [dispatch])
+
+
+    const handleFavorite = e => {
+        e.stopPropagation();
+
+        if (!user) {
+            history.push('/login')
+        }
+        let payload = {
+            'product_id': product.id
+        }
+
+        dispatch(postFavorite(payload))
+    }
+
+    const removeFavorite = e => {
+        e.stopPropagation();
+
+        if (!user) {
+            history.push('/login')
+        }
+
+        dispatch(deleteFavorite(favorite[0].id));
+    }
+
 
 
     if (!thisDict) return null
@@ -81,7 +112,13 @@ const ProductPage = () => {
                     <div className="product-info">
                         <div className="category-line" style={{'border-left': thisDict.border}} >{thisDict.category}</div>
                         <h1>{product.name}</h1>
-                        <h2>${product.price}</h2>
+                        <div className="price-fav">
+                            <h2>${product.price}</h2>
+                            {favorite.length > 0 ?
+                                <i class="fa-solid fa-heart" onClick={removeFavorite}></i> :
+                                <i class="fa-regular fa-heart" onClick={handleFavorite}></i>
+                            }
+                        </div>
                         <div className="add-to-cart-section">
                             <div className="quantity-adjuster">
                                 <button onClick={() => setQuantity(quantity - 1)} disabled={quantity == 1}>

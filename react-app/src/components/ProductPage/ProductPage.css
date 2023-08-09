@@ -268,3 +268,21 @@
     align-items: center;
     gap: 1rem;
 }
+
+.price-fav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.price-fav > i {
+    font-size: 25px;
+    -webkit-text-stroke: 1px red;
+    color: rgb(230, 0, 18);
+    cursor: pointer;
+}
+
+.price-fav > i:hover {
+    -webkit-text-stroke: 1px rgb(184, 0, 15);
+    color: rgb(184, 0, 15);
+}

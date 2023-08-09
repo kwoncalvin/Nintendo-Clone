@@ -53,15 +53,19 @@ const Navigation = ({ isLoaded }) => {
 					<div id='nav-bar-top-right'>
 						{/* <div>Support</div>
 						<div>Wish List</div> */}
+						<div id='wishlist-button' onClick={() => history.push(sessionUser ? '/wishlist' : '/login')}>
+							<i class="fa-solid fa-heart"></i>
+							<div>WishList</div>
+						</div>
 						<div id='cart-button' onClick={() => history.push('/cart')}>
 							<div id='cart-icon'>
 								{sessionUser ?
 									<div id='cart-qty'>{cartQty}</div> :
 									null
 								}
-								<i class="fa-solid fa-cart-shopping"></i>
+								<i class="fa-solid fa-cart-shopping red-hover"></i>
 							</div>
-							<div>Cart</div>
+							<div className='red-hover'>Cart</div>
 						</div>
 						<div>
 							{isLoaded && <ProfileButton user={sessionUser}/>}

@@ -101,6 +101,16 @@ function ProfileButton({ user }) {
                     <button id='manage-products' onClick={manage}>Manage Products</button>
                   </div>
                   <div id='yes-user-space'></div>
+                  <div className="user-info-links">
+                    <button className='bot-border' onClick={() => closeMenu() & history.push('/wishlist')}>
+                      <i class="fa-solid fa-heart"></i>
+                      Wish List
+                    </button>
+                    <button onClick={() => closeMenu() & history.push('/cart')}>
+                      <i class="fa-solid fa-cart-shopping red-hover"></i>
+                      My Cart
+                    </button>
+                  </div>
                   {/* <div className="user-info-links">
                     <button>Wish List</button>
                     <button>Order history</button>

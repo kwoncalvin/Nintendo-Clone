@@ -24,6 +24,7 @@ class Product(db.Model):
 
     user = db.relationship("User", back_populates="products")
     cart_items = db.relationship("CartItem", back_populates="product", cascade="all, delete")
+    favorites = db.relationship("Favorite", back_populates="product", cascade="all, delete")
 
     def to_dict(self):
         return {
