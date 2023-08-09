@@ -53,7 +53,7 @@ const Navigation = ({ isLoaded }) => {
 					<div id='nav-bar-top-right'>
 						{/* <div>Support</div>
 						<div>Wish List</div> */}
-						<div id='wishlist-button' onClick={() => history.push('/wishlist')}>
+						<div id='wishlist-button' onClick={() => history.push(sessionUser ? '/wishlist' : '/login')}>
 							<i class="fa-solid fa-heart"></i>
 							<div>WishList</div>
 						</div>

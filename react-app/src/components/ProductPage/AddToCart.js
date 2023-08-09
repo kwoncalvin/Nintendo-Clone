@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-import { postCartItem } from "../../store/cart_items";
+import { postCartItem, putCartItem } from "../../store/cart_items";
 
 import './ProductPage.css'
 
@@ -12,6 +12,7 @@ function AddToCart({ product, quantity }) {
   const [showMenu, setShowMenu] = useState(false);
   const ulRef = useRef();
   const user = useSelector((state) => state.session.user)
+  const cartItems = useSelector((state) => state.cartItems.currentItems)
 
   useEffect(() => {
     if (!showMenu) return;
@@ -33,13 +34,26 @@ function AddToCart({ product, quantity }) {
     if (!user) {
       history.push('/login')
     }
-    let payload = {
-        'product_id': product.id,
-        'quantity': quantity
+
+    let cartItem = Object.values(cartItems).filter((cartItem) => cartItem.user_id == user.id && cartItem.product_id == product.id);
+    let res;
+    if (cartItem.length > 0) {
+      let qty = cartItem[0].quantity + quantity
+      qty = (qty > 10 ? 10 : qty)
+      let payload = {
+        'quantity': qty
+      }
+      res = await dispatch(putCartItem(payload, cartItem[0].id))
+
+    } else {
+      let payload = {
+          'product_id': product.id,
+          'quantity': quantity
+      }
+      res = await dispatch(postCartItem(payload))
     }
 
-    let cartItem = await dispatch(postCartItem(payload))
-    if (cartItem) {
+    if (res) {
         setShowMenu(true)
     }
 }

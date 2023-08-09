@@ -10,7 +10,10 @@
     width: 100%;
     max-width: 72rem;
     margin-top: 2rem;
+}
 
+#cart-page-body > h1 {
+    margin: 0;
 }
 
 .cart-content {
@@ -85,8 +88,22 @@
 
 .cart-item-name {
     display: flex;
+    flex-direction: column;
     margin-left: 1rem;
     width: 18rem;
+    justify-content: space-between;
+}
+
+.cart-item-name > i {
+    font-size: 25px;
+    -webkit-text-stroke: 1px red;
+    color: rgb(230, 0, 18);
+    cursor: pointer;
+}
+
+.cart-item-name > i:hover {
+    -webkit-text-stroke: 1px rgb(184, 0, 15);
+    color: rgb(184, 0, 15);
 }
 
 .cart-item-name > h4 {

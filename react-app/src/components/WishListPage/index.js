@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-
-import ProductPreview from "../ProductPreview";
+import { getCurrentFavorites } from "../../store/favorites";
+import WishListItem from "./WishListItem";
 
 import './WishListPage.css'
 
@@ -13,32 +13,30 @@ const WishListPage = () => {
 
     const favorites = useSelector((state) => state.favorites.currentFavorites)
 
-    // useEffect(() => {
-    //     dispatch(getCurrentProducts());
-    // }, [dispatch])
+    useEffect(() => {
+        dispatch(getCurrentFavorites());
+    }, [dispatch])
 
     return (
         <div className="dodge-nav" id="current-products-wrap">
             <div className="current-products">
                 <div className='your-path'>
-                    <div className="path-link" onClick={() => history.push('/store')}>Store</div>
+                    <div className="path-link" onClick={() => history.push('/')}>Home</div>
                     <i class="fa-solid fa-greater-than"></i>
-                    <div className='your-link'>My Products</div>
+                    <div className='your-link'>Wish List</div>
                 </div>
-                <h1>My Products</h1>
+                <h1>Wish List</h1>
+                <div style={{'margin-bottom': '1rem'}}>Explore, purchase, or remove items from your Wish List here.</div>
                 <div className="current-products-preview">
-                    <div className="current-products-list">
+                    <div className="favorite-products-list">
                         {Object.values(favorites).map((favorite) => {
                             return (
-                                <ProductPreview
+                                <WishListItem
                                     key={favorite.Product.id}
                                     product={favorite.Product}
                                 />
                             )
                         })}
-                        <button id='new-product' onClick={() => history.push('/store/products/new')}>
-                            <i class="fa-solid fa-plus"></i>
-                        </button>
                     </div>
                 </div>
             </div>
